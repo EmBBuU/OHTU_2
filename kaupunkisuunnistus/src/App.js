@@ -5,6 +5,7 @@ const App = () => (
     <p>Tarvitaan tuutoreja ;_;</p>
     <p>testiiiiii</p>
     <p>dev_atte initial test push</p>
+    <p>EmBBu testaaa</p>
   </div>
 );
 

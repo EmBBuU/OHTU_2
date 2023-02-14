@@ -6,7 +6,6 @@ const App = () => (
     <p>testiiiiii</p>
     <p>dev_atte initial test push</p>
     <p>EmBBu testaaa1</p>
-    <p>jussin initial test</p>
   </div>
 );
 

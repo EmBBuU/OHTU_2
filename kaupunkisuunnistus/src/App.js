@@ -7,6 +7,7 @@ const App = () => (
     <p>Julia testaa tokan kerran, 17.2.</p>
     <p>dev_atte initial test push</p>
     <p>EmBBu testaaa1</p>
+    <p>Jussi testaa!</p>
   </div>
 );
 

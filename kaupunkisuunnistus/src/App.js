@@ -1,5 +1,5 @@
 import React from "react"
-import Button from "./komponentit/Button";
+import Button from "./components/Button";
 
 const App = () => (
   <div>

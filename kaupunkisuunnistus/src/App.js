@@ -1,5 +1,9 @@
+import React from "react"
+import Button from "./komponentit/Button";
+
 const App = () => (
   <div>
+    <Button text="OHJEET" />
     <p>Julia testaa</p>
     <p>Hello world!!</p>
     <p>Tarvitaan tuutoreja ;_;</p>

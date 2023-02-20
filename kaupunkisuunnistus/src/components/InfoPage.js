@@ -1,1 +1,3 @@
-<p>Muokkaan tätäkin vielä</p>
+export default function InfoPage(){
+    return <p>Nyt ollaan infopage komponentissa</p>
+}

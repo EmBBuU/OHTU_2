@@ -12,7 +12,6 @@ import Homepage from "./components/Homepage"
 const App = () => (
   <div>
     <Navbar/>
-    <Button text="OHJEET" />
 
 
     <div className="routeContainer">

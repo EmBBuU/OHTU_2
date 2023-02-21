@@ -5,6 +5,27 @@ import logo from '../images/logo.png'
 //johda atm mihinkää ku tota sivua ei oo olemassa viel
 //ja tosiaan tän ulkonäöllinen muotoilu on kesken, en tiiä miten sen sais sillai tosi cooliksi
 
+import React from 'react'
+
+function Navbar() {
+  return (
+    <div>
+        <nav className="nav">
+            <img src={logo} alt="logo" className="logo"/>
+
+            <Link to="/" className="Heading">ATK-YTP JOENSUU</Link>
+
+            <button>
+                <Link to="/KirjauduSisaan">KIRJAUDU SISÄÄN</Link>
+            </button>
+        </nav>
+    </div>
+  )
+}
+
+export default Navbar
+
+/*
 export default function Navbar() {
     return (
         <nav className="nav">
@@ -21,3 +42,4 @@ export default function Navbar() {
 
     )
 }
+*/

@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+    background-color: #212529;;
+    color: white;
+    font-family: 'Roboto Slab';
+    font-style: normal;
+
+}
+
+.nav {
+    padding: 1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.05rem;
+}
+
+.nav p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding-right: 7rem;
+    padding-left: 16rem;
+    letter-spacing: 0.05rem;
+
+}
+
+img.logo {
+    width: 75px;
+    height: 60px;
+    left: 548px;
+    top: 13px;
+}
+
+a.Heading {
+    text-decoration: none;
+}

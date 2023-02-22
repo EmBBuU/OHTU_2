@@ -28,6 +28,7 @@ const App = () => (
     <div>
       <h1>PISTETILANNE</h1>
       <ScoreTable />
+      <hi1 className="updated">Viimeksi päivitetty: 11:11:11</hi1>
     </div>
   </div>
 );

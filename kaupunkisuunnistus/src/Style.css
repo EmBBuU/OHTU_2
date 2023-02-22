@@ -47,3 +47,8 @@ td {
   border-bottom: 1px solid #ddd;
   height: 35px;
 }
+
+.updated {
+  letter-spacing: 0.05rem;
+  font-size: 14px;
+}

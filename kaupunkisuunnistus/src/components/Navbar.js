@@ -12,34 +12,21 @@ function Navbar() {
     <div>
         <nav className="nav">
             <img src={logo} alt="logo" className="logo"/>
-
             <Link to="/" className="Heading">ATK-YTP JOENSUU</Link>
 
-            <button>
-                <Link to="/KirjauduSisaan">KIRJAUDU SISÄÄN</Link>
-            </button>
+            <div className="navButtons">
+                <button className='btn-login'>
+                    <Link to="/KirjauduSisaan">KIRJAUDU SISÄÄN</Link>
+                </button>
+
+                <button className='btn-info'>
+                    <Link to="/InfoPage" className="InfoPage">Ohjeet</Link>
+                </button>
+            </div>
+
         </nav>
     </div>
   )
 }
 
 export default Navbar
-
-/*
-export default function Navbar() {
-    return (
-        <nav className="nav">
-            <img src={logo} alt="logo" className="logo"/>
-
-            <Link to="/" className="Heading">ATK-YTP JOENSUU</Link>
-
-            <p>
-             <Link to="/KirjauduSisaan">KIRJAUDU SISÄÄN</Link>
-             </p>
-
-
-        </nav>
-
-    )
-}
-*/

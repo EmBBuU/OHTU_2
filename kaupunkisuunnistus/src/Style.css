@@ -8,22 +8,17 @@
 
 .nav {
   padding: 1em;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 0.05rem;
 }
 
-.nav p {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 130%;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  padding-right: 7rem;
-  padding-left: 16rem;
+a.Heading {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 25px;
+  line-height: 33px;
   letter-spacing: 0.05rem;
 }
 
@@ -34,8 +29,16 @@ img.logo {
   top: 13px;
 }
 
-a.Heading {
-  text-decoration: none;
+h2.eventinfoHeading {
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+}
+
+p.eventinfo {
+  font-weight: 400;
+  line-height: 130%;
 }
 
 table {

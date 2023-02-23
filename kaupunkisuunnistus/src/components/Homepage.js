@@ -1,37 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import ScoreTable from "./ScoreTable"
+import CheckpointTable from "./CheckpointTable"
 
 function Homepage() {
   return (
     <div>
-        Homepage
-        <button className='btn-info'>
-            <Link to="/InfoPage" className="InfoPage">Ohjeet</Link>
-        </button>
+
+      <div>
+        <h1>RASTIT</h1>
+        <CheckpointTable />
+      </div>
+      <div>
+        <h1>PISTETILANNE</h1>
+        <ScoreTable />
+        <h1 className="updated">Viimeksi päivitetty: 11:11:11</h1>
+      </div>
     </div>
   )
 }
 
 export default Homepage
-
-/*
-export default function Homepage(){
-    return <p>Nyt ollaan homepage komponentissa</p>
-}
-
-
-function Homepage() {
-  return (
-    <div>
-        Homepage
-        <button>
-            <a href='/InfoPage' class='InfoPage'>Ohjeet</a>
-        </button>
-        
-
-    </div>
-  )
-}
-
-
-*/

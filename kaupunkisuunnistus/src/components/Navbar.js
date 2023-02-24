@@ -12,15 +12,15 @@ function Navbar() {
     <div>
         <nav className="nav">
             <img src={logo} alt="logo" className="logo"/>
-            <Link to="/" className="Heading">ATK-YTP JOENSUU</Link>
+            <Link to="/" className="heading">ATK-YTP JOENSUU</Link>
 
             <div className="navButtons">
                 <button className='btn-login'>
-                    <Link to="/KirjauduSisaan">KIRJAUDU SISÄÄN</Link>
+                    <Link to="/KirjauduSisaan" className="login">KIRJAUDU SISÄÄN</Link>
                 </button>
 
                 <button className='btn-info'>
-                    <Link to="/InfoPage" className="InfoPage">Ohjeet</Link>
+                    <Link to="/InfoPage" className="infoPage">Ohjeet</Link>
                 </button>
             </div>
 

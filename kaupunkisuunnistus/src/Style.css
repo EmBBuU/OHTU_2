@@ -13,7 +13,13 @@
   align-items: center;
 }
 
-a.Heading {
+a.login,
+a.previous,
+a.infoPage  {
+  text-decoration: none;
+}
+
+a.heading {
   text-decoration: none;
   font-style: normal;
   font-weight: 100;

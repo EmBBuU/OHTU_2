@@ -1,11 +1,11 @@
-import React from 'react'
-import ScoreTable from "./ScoreTable"
-import CheckpointTable from "./CheckpointTable"
+import React from "react";
+import ScoreTable from "./ScoreTable";
+import CheckpointTable from "./CheckpointTable";
+import JoensuuMap from "./JoensuuMap";
 
 function Homepage() {
   return (
     <div>
-
       <div>
         <h1>RASTIT</h1>
         <CheckpointTable />
@@ -15,8 +15,12 @@ function Homepage() {
         <ScoreTable />
         <h1 className="updated">Viimeksi päivitetty: 11:11:11</h1>
       </div>
+      <div>
+        <h1>KARTTA</h1>
+        <JoensuuMap />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Homepage
+export default Homepage;

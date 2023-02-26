@@ -5,7 +5,7 @@ import JoensuuMap from "./JoensuuMap";
 
 function Homepage() {
   return (
-    <div>
+    <div className="homepageBody">
       <div>
         <h1>RASTIT</h1>
         <CheckpointTable />

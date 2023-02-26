@@ -6,6 +6,16 @@
   font-style: normal;
 }
 
+div.homepageBody{
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 10%;
+  width: 1028px;
+  
+  position: relative;
+  
+}
+
 .nav {
   padding: 1em;
   display: flex;
@@ -60,4 +70,8 @@ td {
 .updated {
   letter-spacing: 0.05rem;
   font-size: 14px;
+}
+
+iframe.homepageMap{
+  display: inline;
 }

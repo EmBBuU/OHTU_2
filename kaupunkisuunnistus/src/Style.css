@@ -6,7 +6,7 @@
   font-style: normal;
 }
 
-div.homepageBody{
+div.homepageBody {
   margin-left: 35%;
   margin-right: 35%;
   margin-bottom: 10%;
@@ -23,7 +23,7 @@ div.homepageBody{
 
 a.login,
 a.previous,
-a.infoPage  {
+a.infoPage {
   text-decoration: none;
 }
 
@@ -56,7 +56,7 @@ p.eventinfo {
 }
 
 table {
-  width: 50%;
+  width: 600px;
   text-align: left;
 }
 th,
@@ -70,6 +70,6 @@ td {
   font-size: 14px;
 }
 
-iframe.homepageMap{
+iframe.homepageMap {
   display: inline;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 /*
 // Example of a data array that you might receive from an API
@@ -15,16 +15,13 @@ const data = [
 */
 
 const CheckpointTable = () => {
-
-  const [locations, setLocations] = useState([])
+  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3002/api/locations')
-      .then(response => {
-        setLocations(response.data)
-      })
-  }, [])
+    axios.get("http://localhost:3002/api/locations").then((response) => {
+      setLocations(response.data);
+    });
+  }, []);
 
   return (
     <div className="CheckpointTable">

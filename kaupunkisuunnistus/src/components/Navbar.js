@@ -20,7 +20,7 @@ function Navbar() {
                     <tr>
                         <td className="navBottom">
                             <button className='btn-login'>
-                                <Link to="/KirjauduSisaan" className="login">KIRJAUDU SISÄÄN</Link>
+                                <Link to="/Login" className="login">KIRJAUDU SISÄÄN</Link>
                             </button>
 
                             <button className='btn-info'>

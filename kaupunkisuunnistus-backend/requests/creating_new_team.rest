@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/teams
+POST http://localhost:3002/api/teams
 Content-Type: application/json
 
 {
-  "id": "",
+  "id": 8,
   "name": "Gambiinakerholaiset",
   "points": 2
 }

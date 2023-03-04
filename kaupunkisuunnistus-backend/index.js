@@ -25,10 +25,35 @@ let teams = [
   
 ]
 
+let locations = [
+  {
+    id: 1,
+    name: "Tiedepuiston kenttä"
+  },
+  {
+    id: 2,
+    name: "Torisusi"
+  },
+  {
+    id: 3,
+    name: "Suvantosilta"
+  },
+  {
+    id: 4,
+    name: "Kirkkopuisto"
+  },
+  {
+    id: 5,
+    name: "Carelian etupiha"
+  }
+
+]
+
 app.get('/', (request, response) => {
   response.send('<h1>Haloust heloust!</h1>')
 })
 
+// Joukkueet (teams)
 app.get('/api/teams', (request, response) => {
   response.json(teams)
 })
@@ -63,6 +88,44 @@ app.post('/api/teams', (request, response) => {
 
   response.json(team)
 })
+
+
+// Rastipaikat (location)
+app.get('/api/locations', (request, response) => {
+  response.json(locations)
+})
+
+app.get('/api/locations/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const location = locations.find(location => location.id === id)
+
+  if (location) {
+    response.json(location)
+  } else {
+    response.status(404).end()
+  }
+})
+
+app.delete('/api/locations/:id', (request, response) => {
+  const id = Number(request.params.id)
+  locations = locations.filter(location => location.id !== id)
+
+  response.status(204).end()
+})
+
+app.post('/api/locations', (request, response) => {
+  const maxId = locations.length > 0
+    ? Math.max(...locations.map(l => l.id)) 
+    : 0
+
+  const location = request.body
+  location.id = maxId + 1
+
+  locations = locations.concat(location)
+
+  response.json(location)
+})
+
 
 
 

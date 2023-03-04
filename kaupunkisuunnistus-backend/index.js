@@ -1,22 +1,28 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
+app.use(express.json())
+app.use(cors())
 
 let teams = [
   {
     id: 1,
     name: "Oonafanit",
-    points: 5
+    score: 5
   },
   {
     id: 2,
     name: "Lampaat",
-    points: 12
+    score: 12
   },
   {
     id: 3,
     name: "Team fuksit",
-    points: 7
+    score: 3
   },
+  
 ]
 
 app.get('/', (request, response) => {
@@ -45,7 +51,37 @@ app.delete('/api/teams/:id', (request, response) => {
   response.status(204).end()
 })
 
+app.post('/api/teams', (request, response) => {
+  const maxId = teams.length > 0
+    ? Math.max(...teams.map(t => t.id)) 
+    : 0
 
-const PORT = 3001
+  const team = request.body
+  team.id = maxId + 1
+
+  teams = teams.concat(team)
+
+  response.json(team)
+})
+
+
+
+const requestLogger = (request, response, next) => {
+  console.log('Method:', request.method)
+  console.log('Path:  ', request.path)
+  console.log('Body:  ', request.body)
+  console.log('---')
+  next()
+}
+
+app.use(requestLogger)
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
+
+const PORT = process.env.PORT
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)

@@ -78,13 +78,18 @@ img.logo {
 
 td.navBottom {
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
   border-bottom: none;
 }
 
 td.navTop {
-  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 32px;
+  padding-bottom: 40px;
 }
 
 .infopage {

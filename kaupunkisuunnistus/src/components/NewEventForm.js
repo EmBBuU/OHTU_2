@@ -3,24 +3,20 @@ import React from "react";
 function NewEventForm() {
     return (
         <div className="eventform">
-            <h2>Luo uusi tapahtuma</h2>
-            <div>
-                <label for="eventName">Tapahtuman nimi: </label>
-                <input id="eventName" />
-            </div>
-            <div>
-                <label for="eventTeams">Tapahtuman tiimien määrä: </label>
-                <input id="eventTeams" />
-            </div>
-            <div>
-                <label for="eventPlaces">Tapahtuman rastien määrä: </label>
-                <input id="eventPlaces" />
-            </div>
-            <div>
-                <label for="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
-                <input id="eventInfotext" />
-            </div>
-            <button>Luo uusi tapahtuma</button>
+            <h2>LUO UUSI TAPAHTUMA</h2>
+            <label for="eventName">Tapahtuman nimi: </label>
+            <input id="eventName" className="eventName" />
+
+            <label for="eventPlaces">Tapahtuman rastien määrä (anna numeroina): </label>
+            <input id="eventPlaces" className="eventPlaces" />
+
+            <label for="eventTeams">Tapahtuman tiimien määrä (anna numeroina): </label>
+            <input id="eventTeams" className="eventTeams" />
+
+            <label for="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
+            <textarea id="eventInfoText" className="eventInfoText" />
+
+            <button className="savebutton">TALLENNA</button>
             <p>Huom! Kun painat nappia, uusi tapahtuma tulee automaattisesti aktiiviseksi. </p>
         </div>
     )

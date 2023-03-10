@@ -25,49 +25,6 @@ app.use(express.json());
 app.use(requestLogger);
 app.use(morgan('tiny'))
 
-/*
-let teams = [
-  {
-    team_id: 1,
-    name: "Oonafanit",
-    score: 5,
-  },
-  {
-    team_id: 2,
-    name: "Lampaat",
-    score: 12,
-  },
-  {
-    team_id: 3,
-    name: "Team fuksit",
-    score: 3,
-  },
-];
-
-let locations = [
-  {
-    location_id: 1,
-    name: "Tiedepuiston kenttä",
-  },
-  {
-    location_id: 2,
-    name: "Torisusi",
-  },
-  {
-    location_id: 3,
-    name: "Suvantosilta",
-  },
-  {
-    location_id: 4,
-    name: "Kirkkopuisto",
-  },
-  {
-    location_id: 5,
-    name: "Carelian etupiha",
-  },
-];
-*/
-
 app.get("/", (request, response) => {
   console.log(`Haloust heloust`)
   response.send("<h1>Haloust heloust!</h1>");
@@ -81,8 +38,19 @@ app.get("/api/teams", (request, response) => {
   })
 });
 
-// Ei toimi!
-app.get("/api/teams/:id", (request, response) => {
+app.get("/api/teams/:id", (request, response, next) => {
+  Team.findById(request.params.id)
+    .then(team => {
+      if (team) {
+        console.log(team)
+        response.json(team)
+      }
+      else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => next(error))
+  /*
   const id = Number(request.params.id);
   const team = Team.find((team) => team.team_id === id);
 
@@ -92,7 +60,8 @@ app.get("/api/teams/:id", (request, response) => {
   } else {
     response.status(404).end();
   }
-});
+  */
+})
 
 // Ei toimi!
 app.delete("/api/teams/:id", (request, response) => {
@@ -102,7 +71,7 @@ app.delete("/api/teams/:id", (request, response) => {
   response.status(204).end();
 });
 
-app.post("/api/teams", (request, response) => {
+app.post("/api/teams", (request, response, next) => {
   const body = request.body
 
   if (body.name === undefined) {
@@ -115,10 +84,11 @@ app.post("/api/teams", (request, response) => {
     score: body.score || 0
   })
 
-  team.save().then(savedTeam => {
-    response.json(savedTeam)
-  })
-
+  team.save()
+    .then(savedTeam => {
+      response.json(savedTeam)
+    })
+    .catch(error => next(error))
   /*
   const maxId = teams.length > 0 ? Math.max(...teams.map((t) => t.team_id)) : 0;
 
@@ -136,12 +106,23 @@ app.post("/api/teams", (request, response) => {
 app.get("/api/locations", (request, response) => {
   Location.find({}).then(locations => {
     console.log(`List of locations: `, locations)
-    response.json(locations);
+    response.json(locations)
   })
 });
 
-// Ei toimi!
-app.get("/api/locations/:id", (request, response) => {
+app.get("/api/locations/:id", (request, response, next) => {
+  Location.findById(request.params.id)
+    .then(location => {
+      if (location) {
+        console.log(location)
+        response.json(location)
+      }
+      else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => next(error))
+  /*
   const id = Number(request.params.id);
   const location = locations.find((l) => l.location_id === id);
 
@@ -151,6 +132,7 @@ app.get("/api/locations/:id", (request, response) => {
   } else {
     response.status(404).end();
   }
+  */
 });
 
 // Ei toimi!
@@ -161,8 +143,25 @@ app.delete("/api/locations/:id", (request, response) => {
   response.status(204).end();
 });
 
-// Ei toimi!
-app.post("/api/locations", (request, response) => {
+
+app.post("/api/locations", (request, response, next) => {
+  const body = request.body
+
+  if (body.name === undefined) {
+    return response.status(400).json({ error: 'location name missing' })
+  }
+
+  const location = new Location({
+    // location_id automatisoitu incrementti tähän?
+    name: body.name
+  })
+
+  location.save()
+    .then(savedLocation => {
+      response.json(savedLocation)
+    })
+    .catch(error => next(error))
+  /*
   const body = request.body
 
   const maxId =
@@ -175,9 +174,22 @@ app.post("/api/locations", (request, response) => {
   console.log(`Added location: `, location)
 
   response.json(location);
+  */
 });
 
 app.use(unknownEndpoint);
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  }
+
+  next(error)
+}
+
+app.use(errorHandler)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {

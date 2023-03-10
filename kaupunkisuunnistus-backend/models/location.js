@@ -15,7 +15,10 @@ mongoose.connect(url)
 
 const locationSchema = new mongoose.Schema({
   location_id: Number,
-  name: String,
+  name: {
+    type: String,
+    required: true
+  } 
 })
 
 locationSchema.set('toJSON', {

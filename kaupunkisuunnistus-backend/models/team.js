@@ -15,7 +15,10 @@ mongoose.connect(url)
 
 const teamSchema = new mongoose.Schema({
   team_id: Number,
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   score: Number
 })
 

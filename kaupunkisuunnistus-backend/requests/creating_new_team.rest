@@ -2,7 +2,6 @@ POST http://localhost:3002/api/teams
 Content-Type: application/json
 
 {
-  "id": 8,
   "name": "Gambiinakerholaiset",
-  "points": 2
+  "score": 2
 }

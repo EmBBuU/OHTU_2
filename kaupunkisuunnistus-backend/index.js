@@ -81,9 +81,10 @@ app.get("/api/teams", (request, response) => {
   })
 });
 
+// Ei toimi!
 app.get("/api/teams/:id", (request, response) => {
   const id = Number(request.params.id);
-  const team = teams.find((team) => team.team_id === id);
+  const team = Team.find((team) => team.team_id === id);
 
   if (team) {
     console.log(`Details of team ${id}: `, team)
@@ -93,6 +94,7 @@ app.get("/api/teams/:id", (request, response) => {
   }
 });
 
+// Ei toimi!
 app.delete("/api/teams/:id", (request, response) => {
   const id = Number(request.params.id);
   teams = teams.filter((team) => team.team_id !== id);
@@ -101,6 +103,23 @@ app.delete("/api/teams/:id", (request, response) => {
 });
 
 app.post("/api/teams", (request, response) => {
+  const body = request.body
+
+  if (body.name === undefined) {
+    return response.status(400).json({ error: 'team name missing' })
+  }
+
+  const team = new Team({
+    // team_id automatisoitu incrementti tähän?
+    name: body.name,
+    score: body.score || 0
+  })
+
+  team.save().then(savedTeam => {
+    response.json(savedTeam)
+  })
+
+  /*
   const maxId = teams.length > 0 ? Math.max(...teams.map((t) => t.team_id)) : 0;
 
   const team = request.body;
@@ -110,6 +129,7 @@ app.post("/api/teams", (request, response) => {
   console.log(`Added team: `, team)
 
   response.json(team);
+  */
 });
 
 // Rastipaikat (location)
@@ -120,6 +140,7 @@ app.get("/api/locations", (request, response) => {
   })
 });
 
+// Ei toimi!
 app.get("/api/locations/:id", (request, response) => {
   const id = Number(request.params.id);
   const location = locations.find((l) => l.location_id === id);
@@ -132,6 +153,7 @@ app.get("/api/locations/:id", (request, response) => {
   }
 });
 
+// Ei toimi!
 app.delete("/api/locations/:id", (request, response) => {
   const id = Number(request.params.id);
   locations = locations.filter((l) => l.location_id !== id);
@@ -139,7 +161,10 @@ app.delete("/api/locations/:id", (request, response) => {
   response.status(204).end();
 });
 
+// Ei toimi!
 app.post("/api/locations", (request, response) => {
+  const body = request.body
+
   const maxId =
     locations.length > 0 ? Math.max(...locations.map((l) => l.location_id)) : 0;
 
@@ -154,7 +179,7 @@ app.post("/api/locations", (request, response) => {
 
 app.use(unknownEndpoint);
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

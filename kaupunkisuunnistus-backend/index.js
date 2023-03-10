@@ -56,20 +56,41 @@ app.get("/api/teams/:id", (request, response, next) => {
 
   if (team) {
     console.log(`Details of team ${id}: `, team)
-    response.json(team);
+    response.json(team.dele);
   } else {
     response.status(404).end();
   }
   */
 })
 
-// Ei toimi!
-app.delete("/api/teams/:id", (request, response) => {
+app.delete("/api/teams/:id", (request, response, next) => {
+  Team.findByIdAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
+  /*
   const id = Number(request.params.id);
-  teams = teams.filter((team) => team.team_id !== id);
+  teams = teams.filter((team) => team.id !== id);
 
   response.status(204).end();
+  */
 });
+
+// Ei testattu
+app.put("/api/teams/:id", (request, response, next) => {
+  const { name, score } = request.body
+
+  Team.findByIdAndUpdate(
+    request.params.id,
+    { name, score },
+    { new: true, runValidators: true, context: 'query' }
+  )
+    .then(updatedTeam => {
+      response.json(updatedTeam)
+    })
+    .catch(error => next(error))
+})
 
 app.post("/api/teams", (request, response, next) => {
   const body = request.body
@@ -135,13 +156,34 @@ app.get("/api/locations/:id", (request, response, next) => {
   */
 });
 
-// Ei toimi!
-app.delete("/api/locations/:id", (request, response) => {
+app.delete("/api/locations/:id", (request, response, next) => {
+  Location.findByIdAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
+  /*
   const id = Number(request.params.id);
   locations = locations.filter((l) => l.location_id !== id);
 
-  response.status(204).end();
+  reponse.status(204).end();
+  */
 });
+
+// Ei testattu
+app.put("/api/locations/:id", (request, response, next) => {
+  const { name } = request.body
+
+  Team.findByIdAndUpdate(
+    request.params.id,
+    { name },
+    { new: true, runValidators: true, context: 'query' }
+  )
+    .then(updatedLocation => {
+      response.json(updatedLocation)
+    })
+    .catch(error => next(error))
+})
 
 
 app.post("/api/locations", (request, response, next) => {
@@ -185,6 +227,10 @@ const errorHandler = (error, request, response, next) => {
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
   }
+  else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
+  }
+
 
   next(error)
 }

@@ -22,7 +22,7 @@ const InfoPage = () => {
         Missä? Tiedepuiston kentältä aloitetaan klo 17:00</p>
 
       <button>
-        <Link to="/" className='previous'>Takaisin</Link>
+        <Link to="/" className='previous'>TAKAISIN</Link>
       </button>
     </div>
   )

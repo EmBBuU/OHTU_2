@@ -5,12 +5,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Login () {
-    return(
-        <div>
+function Login() {
+    return (
+        <div className="login">
             <p>Väliaikaiset napit sivujen tarkasteluun:</p>
             <button>
-                <Link to="/NewEventForm">Uuden tapahtuman luominen</Link>
+                <Link to="/NewEventForm">UUDEN TAPAHTUMAN LUOMINEN</Link>
+            </button>
+            <button>
+                <Link to="/SelectCheckpoint">RASTINPITÄJIEN ETUSIVU</Link>
+            </button>
+            <button>
+                <Link to="/GivePoints">PISTEIDENANTO-SIVU</Link>
             </button>
         </div>
     )

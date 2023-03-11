@@ -24,7 +24,7 @@ function Navbar() {
                             </button>
 
                             <button className='btn-info'>
-                                <Link to="/InfoPage" className="infoPage">Ohjeet</Link>
+                                <Link to="/InfoPage" className="infoPage">OHJEET</Link>
                             </button>
                         </td>
                     </tr>

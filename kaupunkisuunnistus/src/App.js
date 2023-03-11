@@ -6,7 +6,8 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import "./Style.css";
 import NewEventForm from "./components/NewEventForm";
-
+import SelectCheckpoint from "./components/SelectCheckpoint";
+import GivePoints from "./components/GivePoints";
 
 const App = () => (
   <div>
@@ -17,10 +18,12 @@ const App = () => (
         <Route path="/" element={<Homepage />} />
         <Route path="/InfoPage" element={<InfoPage />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/NewEventForm" element={<NewEventForm/>} />
+        <Route path="/NewEventForm" element={<NewEventForm />} />
+        <Route path="/SelectCheckpoint" element={<SelectCheckpoint />} />
+        <Route path="/GivePoints" element={<GivePoints />} />
       </Routes>
     </div>
-    
+
   </div>
 );
 

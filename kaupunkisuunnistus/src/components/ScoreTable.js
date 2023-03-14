@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 /*
 // Example of a data array that you might receive from an API
@@ -13,16 +13,13 @@ const data = [
 */
 
 const ScoreTable = () => {
-
-  const [teams, setTeams] = useState([])
+  const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3002/api/teams')
-      .then(response => {
-        setTeams(response.data)
-      })
-  }, [])
+    axios.get("http://localhost:3002/api/teams").then((response) => {
+      setTeams(response.data);
+    });
+  }, []);
 
   return (
     <div className="ScoreTable">

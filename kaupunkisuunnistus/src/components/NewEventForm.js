@@ -13,6 +13,9 @@ function NewEventForm() {
             <label for="eventTeams">Tapahtuman tiimien määrä (anna numeroina): </label>
             <input id="eventTeams" className="eventTeams" />
 
+            <label for="mapsLink">Tapahtuman maps-linkki:</label>
+            <input id="mapsLink" className="mapsLink" />
+
             <label for="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
             <textarea id="eventInfoText" className="eventInfoText" />
 

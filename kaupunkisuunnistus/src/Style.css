@@ -115,15 +115,16 @@ td.navTop {
 
 input.eventPlaces,
 input.eventTeams {
-  width: 25%;
+  width: 15%;
 }
 
+input.mapsLink,
 input.eventName {
-  width: 60%;
+  width: 50%;
 }
 
 textarea.eventInfoText {
-  height: 150px;
+  height: 200px;
   width: 70%;
   resize: none;
 }

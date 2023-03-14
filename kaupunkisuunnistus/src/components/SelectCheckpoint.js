@@ -3,7 +3,7 @@ import CheckpointTableLinks from "./CheckpointTableLinks";
 
 function SelectCheckpoint() {
   return (
-    <div>
+    <div className="selectchekpoint">
       <div>
         <b>Valitse rasti, jota haluat pisteyttää</b>
         <h1>RASTIT</h1>

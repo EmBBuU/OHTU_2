@@ -13,7 +13,9 @@ const GivePoints = () => {
 
   return (
     // useRef -> Minkä rastin pisteitä ollaan antamassa!!
-    <div className="ScoreTable">
+    <div className="givepoints">
+      <b>Anna ryhmille rastikohtaiset pisteet </b>
+      <h1>RASTIN NIMI</h1>
       <table>
         <tr>
           <th>RYHMÄN NIMI</th>
@@ -31,6 +33,9 @@ const GivePoints = () => {
             );
           })}
       </table>
+      <button className="previous">
+        <a href="/SelectCheckpoint">EDELLINEN</a>
+      </button>
     </div>
   );
 };

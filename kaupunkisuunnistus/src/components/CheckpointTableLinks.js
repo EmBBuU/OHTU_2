@@ -3,17 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-/*
-// Example of a data array that you might receive from an API
-const data = [
-  { number: 1, place: "Tiedepuiston kenttä" },
-  { number: 2, place: "Kirkkopuisto" },
-  { number: 3, place: "Suvantosilta" },
-  { number: 4, place: "Torisusi" },
-  { number: 5, place: "Tori" },
-  { number: 6, place: "jne jne..." },
-];
-*/
+// TÄMÄ SIVU NÄKYY VAIN SISÄÄNKIRJAUTUNEILLA!
 
 const CheckpointTableLinks = () => {
   const [locations, setLocations] = useState([]);

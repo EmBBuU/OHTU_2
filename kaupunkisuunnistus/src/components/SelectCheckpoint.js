@@ -1,15 +1,16 @@
 import React from "react";
-import CheckpointTable from "./CheckpointTable";
+import CheckpointTableLinks from "./CheckpointTableLinks";
 
-function SelectChekpoint() {
+function SelectCheckpoint() {
   return (
-    <div>
+    <div className="selectchekpoint">
       <div>
+        <b>Valitse rasti, jota haluat pisteyttää</b>
         <h1>RASTIT</h1>
-        <CheckpointTable />
+        <CheckpointTableLinks />
       </div>
     </div>
   );
 }
 
-export default SelectChekpoint;
+export default SelectCheckpoint;

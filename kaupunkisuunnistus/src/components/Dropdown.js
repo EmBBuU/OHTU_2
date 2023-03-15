@@ -1,7 +1,7 @@
 const Dropdown = () => {
   return (
     <div class="dropdown">
-      <span>Mouse over me</span>
+      <span>Tapahtuman valinta</span>
       <div class="dropdown-content">
         <p>Hello World!</p>
         <a href="#">Link 1</a>

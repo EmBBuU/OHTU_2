@@ -4,10 +4,11 @@
   color: white;
   font-family: "Roboto Slab";
   font-style: normal;
-
 }
 
-div.homepageBody {
+div.homepageBody,
+div.givepoints,
+div.selectchekpoint {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,21 +116,38 @@ td.navTop {
 
 input.eventPlaces,
 input.eventTeams {
-  width: 25%;
+  width: 15%;
 }
 
+input.mapsLink,
 input.eventName {
-  width: 60%;
+  width: 50%;
 }
 
 textarea.eventInfoText {
-  height: 150px;
+  height: 200px;
   width: 70%;
   resize: none;
 }
 
 button.savebutton {
-  width: 30%;
+  width: 20%;
+}
+button.savebutton a {
+  text-decoration: none;
+}
+button.savebutton a:hover {
+  color: black;
+}
+
+button.previouslogin {
+  width: 20%;
+}
+button.previouslogin a {
+  text-decoration: none;
+}
+button.previouslogin a:hover {
+  color: black;
 }
 
 div.login {
@@ -142,4 +160,30 @@ div.login {
   margin-left: 18%;
   margin-right: 18%;
   margin-bottom: 10%;
+}
+
+/* Napeille pitäisi saada yhtenäinen muotoilu.... 
+*/
+.previous {
+  margin-top: 20px;
+}
+.previous a {
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: none;
+}
+.previous a:hover {
+  color: black;
+}
+
+/* Rastien valinnan muotilu
+*/
+.CheckpointTableLinks a:hover {
+  color: black;
+}
+.CheckpointTableLinks a {
+  text-decoration: none;
 }

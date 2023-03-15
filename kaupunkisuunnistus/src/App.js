@@ -23,7 +23,6 @@ const App = () => (
         <Route path="/GivePoints" element={<GivePoints />} />
       </Routes>
     </div>
-
   </div>
 );
 

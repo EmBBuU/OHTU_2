@@ -1,40 +1,10 @@
 import React from "react";
-<<<<<<< HEAD
-import Button from "./Button";
-import ScoreTable from "./ScoreTable";
-
-
-const GivePoints = () =>{
-  const [ counter, setCounter ] = React.useState(0)
-
-  return (
-    <div>
-    <div>{counter}</div>
-    <div>
-      <button onClick={() => setCounter(counter + 1)}>
-      +
-      </button>
-      <button onClick={() => setCounter(counter-1)}> 
-      -
-      </button>
-      </div>
-      <div>
-        <h1>RASTI NRO X</h1>
-      </div>
-      <div>
-        <ScoreTable />
-      </div>
-    </div>
-  );
-}
-
-
-=======
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
+  const [counter, setCounter]=useState(0);
 
   useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
@@ -43,14 +13,21 @@ const GivePoints = () => {
   }, []);
 
   return (
-    // useRef -> Minkä rastin pisteitä ollaan antamassa!!
+    // useRef -> Minkä rastin pisteitä ollaan antamassa!! väliaikaisesti näkyvissä conterina, mutta alempana määritetty ns "oikea tapa"
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
       <h1>RASTIN NIMI</h1>
+      <div>{counter}</div>
       <table>
         <tr>
           <th>RYHMÄN NIMI</th>
           <th>RYHMÄN PISTEET RASTILTA</th>
+          <th><button onClick={() => setCounter(counter + 1)}>
+                   +
+                </button>
+                <button onClick={() => setCounter(counter - 1)}>
+                   -
+                </button></th>
         </tr>
         {teams
           // Tähän kohtaan kaipaisi .sort -metodia, että saataisiin joukkueet lajiteltua pisteiden mukaan.
@@ -59,6 +36,12 @@ const GivePoints = () => {
               <tr key={key}>
                 <td>{team.name}</td>
                 <td>{team.points}</td>
+                <td><button onClick={() => setTeams(team.points + 1)}>
+                   +
+                   </button></td>
+                <td><button onClick={() => setTeams(team.points- 1)}>
+                   -
+                </button></td>
               </tr>
               //Tuohon team.point -muuttujaan menis ne napeilla annetut pisteet!!!
             );
@@ -70,5 +53,4 @@ const GivePoints = () => {
     </div>
   );
 };
->>>>>>> 8439f2378a76fdb4a91307f8fc481a69c5e346bb
 export default GivePoints;

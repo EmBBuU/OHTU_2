@@ -48,7 +48,7 @@ const GivePoints = () => {
           })}
       </table>
       <button className="previous">
-        <a href="/SelectCheckpoint">EDELLINEN</a>
+        <a href="/SelectCheckpoint">TAKAISIN</a>
       </button>
     </div>
   );

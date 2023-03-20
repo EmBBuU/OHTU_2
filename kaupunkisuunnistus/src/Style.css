@@ -84,6 +84,9 @@ td.navBottom {
   justify-content: space-evenly;
   border-bottom: none;
 }
+.navBottom a:hover {
+  color: black;
+}
 
 td.navTop {
   display: flex;

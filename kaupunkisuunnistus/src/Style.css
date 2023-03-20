@@ -190,3 +190,7 @@ div.login {
 .CheckpointTableLinks a {
   text-decoration: none;
 }
+.btnGivepoints {
+  margin-left: 20px;
+  margin-right: 20px;
+}

@@ -30,7 +30,7 @@ const ScoreTable = () => {
           <th>RYHMÄN PISTETILANNE</th>
         </tr>
         {teams
-          // Tähän kohtaan kaipaisi .sort -metodia, että saataisiin joukkueet lajiteltua pisteiden mukaan.
+          .sort((a, b) => b.score - a.score)
           .map((team, key) => {
             return (
               <tr key={key}>

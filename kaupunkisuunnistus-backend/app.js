@@ -1,8 +1,14 @@
 const config = require('./utils/config')
 const express = require('express')
+require('express-async-errors')
 const app = express()
 const cors = require('cors')
+
 const morgan = require('morgan');
+morgan.token('body', request => {
+  return JSON.stringify(request.body)
+})
+
 const teamsRouter = require('./controllers/teams')
 const locationsRouter = require('./controllers/locations')
 const middleware = require('./utils/middleware')
@@ -23,7 +29,7 @@ mongoose.connect(config.MONGODB_URI)
 app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
-app.use(morgan('tiny'))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 app.use(middleware.requestLogger)
 
 app.use('/api/teams', teamsRouter)

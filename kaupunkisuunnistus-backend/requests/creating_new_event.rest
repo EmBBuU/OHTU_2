@@ -1,0 +1,10 @@
+POST http://localhost:3002/api/events
+Content-Type: application/json
+
+{
+  "eventName": "Testitapahtuma",
+  "eventPlaces": 3,
+  "eventTeams": 2,
+  "mapsLink": "0",
+  "eventInfoText": "tekstiä"
+}

@@ -11,6 +11,7 @@ morgan.token('body', request => {
 
 const teamsRouter = require('./controllers/teams')
 const locationsRouter = require('./controllers/locations')
+const eventsRouter = require('./controllers/events')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
@@ -34,6 +35,7 @@ app.use(middleware.requestLogger)
 
 app.use('/api/teams', teamsRouter)
 app.use('/api/locations', locationsRouter)
+app.use('/api/events', eventsRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

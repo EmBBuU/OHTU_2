@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// note to self (Julialle, itselle), lisää vielä onChange kohtiin esim onChange={(e)=>{setEventName(e.target.value)}}
 
-// ja muille jos tätä sivua testailette: atm tallenna-nappia painaessa tulee punasta konsoliin,
-// korjaan kyllä, ja johtuu siitä et oon alotellu yhteyden muodostamista backendiin mut jättäny kesken,
-// tää on vielä työn alla
 
 function NewEventForm() {
 
@@ -12,16 +8,16 @@ function NewEventForm() {
   const [eventPlaces, setEventPlaces] = useState('')
   const [eventTeams, setEventTeams] = useState('')
   const [mapsLink, setMapsLink] = useState('')
-  const [eventInfoText, setEventInfoText] = useState('') //en tiiä tarviiko tätä jos infoteksti ei mene tietokantaan
+  const [eventInfoText, setEventInfoText] = useState('')
 
   async function submit(e) {
     e.preventDefault();
 
     try {
-      alert("(tähän tulee ilmotus siitä että tapahtuma on tallennettu...)")
+      alert("Tapahtuma on tallennettu!")
 
-      await axios.post(""/*toho joku osote, en vielä älynny mikä... varmaan tän kyseisen sivun*/, {
-        eventName, eventPlaces, eventTeams, mapsLink, eventInfoText //tai infotext pois tästä jos se ei mene tietokantaan
+      await axios.post("http://localhost:3002/api/events", {
+        eventName, eventPlaces, eventTeams, mapsLink, eventInfoText
       })
 
     } catch (e) {
@@ -37,23 +33,23 @@ function NewEventForm() {
         <h2>LUO UUSI TAPAHTUMA</h2>
 
         <label for="eventName">Tapahtuman nimi: </label>
-        <input id="eventName" className="eventName" type="text" onChange={(e) => (e.target.value)} />
+        <input id="eventName" className="eventName" type="String" onChange={(e) => { setEventName(e.target.value) }} />
 
         <label for="eventPlaces">
           Tapahtuman rastien määrä (anna numeroina):{" "}
         </label>
-        <input id="eventPlaces" className="eventPlaces" type="number" />
+        <input id="eventPlaces" className="eventPlaces" type="number" onChange={(e) => { setEventPlaces(e.target.value) }} />
 
         <label for="eventTeams">
           Tapahtuman tiimien määrä (anna numeroina):{" "}
         </label>
-        <input id="eventTeams" className="eventTeams" type="number" />
+        <input id="eventTeams" className="eventTeams" type="number" onChange={(e) => { setEventTeams(e.target.value) }} />
 
         <label for="mapsLink">Tapahtuman maps-linkki:</label>
-        <input id="mapsLink" className="mapsLink" type="text" />
+        <input id="mapsLink" className="mapsLink" type="String" onChange={(e) => { setMapsLink(e.target.value) }} />
 
         <label for="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
-        <textarea id="eventInfoText" className="eventInfoText" type="text" />
+        <textarea id="eventInfoText" className="eventInfoText" type="String" onChange={(e) => { setEventInfoText(e.target.value) }} />
 
         <button className="savebutton" id="savebutton" type="submit" onClick={submit}>
           <a href="/login">TALLENNA</a>

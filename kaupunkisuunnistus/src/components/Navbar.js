@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png'
 
-//täällä vielä olematon linkki tuo "Kirjaudu sisään", eli se ei
-//johda atm mihinkää ku tota sivua ei oo olemassa viel
 
 import React from 'react'
 

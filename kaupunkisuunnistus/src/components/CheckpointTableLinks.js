@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-// TÄMÄ SIVU NÄKYY VAIN SISÄÄNKIRJAUTUNEILLA!
+// THIS PAGE IS ONLY VISIBLE TO USERS WHO HAVE LOGGED IN!
 
 const CheckpointTableLinks = () => {
   const [locations, setLocations] = useState([]);

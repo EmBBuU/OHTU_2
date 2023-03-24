@@ -4,9 +4,15 @@ import { useState, useEffect } from "react";
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
-  const [teamPoints, setTeamPoints] = useState(
-    [] //teams.reduce((acc, team) => ({ ...acc, [team.name]: 0 }), {})
-  );
+  const [teamPoints, setTeamPoints] = useState([]);
+
+  //This useEffect sets up an effect that will be called every time the value of teams changes.
+  //It sets teamPoints to an object with the keys being the names of each team and the values being 0.
+  useEffect(() => {
+    setTeamPoints(
+      teams.reduce((acc, team) => ({ ...acc, [team.name]: 0 }), {})
+    );
+  }, [teams]);
 
   useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
@@ -15,7 +21,6 @@ const GivePoints = () => {
   }, []);
 
   const addPoints = (event) => {
-    event.preventDefault();
     const pointObject = {
       score: teamPoints,
     };
@@ -23,31 +28,21 @@ const GivePoints = () => {
     axios
       .post("http://localhost:3002/api/teams", pointObject)
       .then((response) => {
-        setTeamPoints(teams.concat(response.data));
+        setTeamPoints(response.data);
         console.log(response);
       });
   };
-  /*
-  const handlePointsChange = (teamName, event) => {
-    const copy = [...teamPoints];
-    copy[teamName] = event;
-    setTeamPoints(copy);
-    console.log(event);
-  };
+
   const handlePointsChange = (teamName, value) => {
+    const newValue = parseInt(value);
+    console.log(teamName);
+    console.log(value);
     setTeamPoints({
       ...teamPoints,
-      [teamName]: value,
+      [teamName]: newValue,
     });
   };
-    const { name, value } = event.target;
-    console.log(key);
-    setTeamPoints({ ...teamPoints, [key]: value });
-  };
-  */
-  const handlePointsChange = (event) => {
-    setTeamPoints(event.target.value);
-  };
+  console.log(teamPoints);
 
   return (
     // useRef -> Minkä rastin pisteitä ollaan antamassa!!
@@ -69,7 +64,10 @@ const GivePoints = () => {
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsChange(team.name, teamPoints[team.name] + 1)
+                      handlePointsChange(
+                        team.name,
+                        (teamPoints[team.name] += 1)
+                      )
                     }
                   >
                     +
@@ -78,13 +76,19 @@ const GivePoints = () => {
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsChange(team.name, teamPoints[team.name] - 1)
+                      handlePointsChange(
+                        team.name,
+                        (teamPoints[team.name] -= 1)
+                      )
                     }
                   >
                     -
                   </button>
                 </td>
-                <td>{team.score}</td>
+                <td>{team.score + teamPoints[team.name]}</td>
+                {
+                  // Virhe ilmo tulee kaiketi tuosta yläpuolen rivistä
+                }
               </tr>
             );
           })}
@@ -123,3 +127,33 @@ export default GivePoints;
     setTeamPoints({ ...teamPoints, [key]: value });
   };
 */
+/*
+  const handlePointsChange = (teamName, event) => {
+    const copy = [...teamPoints];
+    copy[teamName] = event;
+    setTeamPoints(copy);
+    console.log(event);
+  };
+  const handlePointsChange = (teamName, value) => {
+    setTeamPoints({
+      ...teamPoints,
+      [teamName]: value,
+    });
+  };
+  const handlePointsChange = (event) => {
+    setTeamPoints(event.target.value);
+  };
+    const { name, value } = event.target;
+    console.log(key);
+    setTeamPoints({ ...teamPoints, [key]: value });
+  };
+
+
+  <button
+                    onClick={() =>
+                      addPoints(team.score + teamPoints[team.name])
+                    }
+                  >
+                    OK
+                  </button>
+  */

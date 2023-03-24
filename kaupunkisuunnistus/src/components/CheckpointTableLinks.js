@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-// TÄMÄ SIVU NÄKYY VAIN SISÄÄNKIRJAUTUNEILLA!
+// THIS PAGE IS ONLY VISIBLE TO USERS WHO HAVE LOGGED IN!
 
 const CheckpointTableLinks = () => {
   const [locations, setLocations] = useState([]);
@@ -18,22 +18,24 @@ const CheckpointTableLinks = () => {
   return (
     <div className="CheckpointTableLinks">
       <table>
-        <tr>
-          <th>RASTI NRO</th>
-          <th>RASTIN NIMI</th>
-        </tr>
-        {locations.map((location, key) => {
-          return (
-            <tr key={key}>
-              <td>
-                <Link to={pointsLink}>{key + 1}</Link>
-              </td>
-              <td>
-                <Link to={pointsLink}>{location.name}</Link>
-              </td>
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>RASTI NRO</th>
+            <th>RASTIN NIMI</th>
+          </tr>
+          {locations.map((location, key) => {
+            return (
+              <tr key={key}>
+                <td>
+                  <Link to={pointsLink}>{key + 1}</Link>
+                </td>
+                <td>
+                  <Link to={pointsLink}>{location.name}</Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

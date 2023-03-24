@@ -33,6 +33,9 @@ a.heading {
   letter-spacing: 0.05rem;
 }
 
+/**
+  Alla infosivun muotoilu
+*/
 h2.eventinfoHeading {
   font-weight: bold;
   font-size: 25px;
@@ -44,6 +47,17 @@ p.eventinfo {
   font-weight: 400;
   line-height: 130%;
 }
+
+.infopage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+}
+
 
 table {
   width: 600px;
@@ -65,6 +79,9 @@ iframe.homepageMap {
   display: inline;
 }
 
+/**
+  Alla navbar muotoilu
+*/
 img.logo {
   width: 75px;
   height: 60px;
@@ -84,6 +101,7 @@ td.navBottom {
   justify-content: space-evenly;
   border-bottom: none;
 }
+
 .navBottom a:hover {
   color: black;
 }
@@ -96,17 +114,11 @@ td.navTop {
   padding-bottom: 40px;
 }
 
-.infopage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-}
 
-.eventform {
+/**
+  Alla tapahtuman luonnin sivun muotoilu
+*/
+.eventformForm {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -136,19 +148,26 @@ textarea.eventInfoText {
 button.savebutton {
   width: 20%;
 }
+
 button.savebutton a {
   text-decoration: none;
 }
+
 button.savebutton a:hover {
   color: black;
 }
 
+/**
+  Alla kirjautumissivun muotoiluja
+*/
 button.previouslogin {
   width: 20%;
 }
+
 button.previouslogin a {
   text-decoration: none;
 }
+
 button.previouslogin a:hover {
   color: black;
 }
@@ -170,6 +189,7 @@ div.login {
 .previous {
   margin-top: 20px;
 }
+
 .previous a {
   text-decoration: none;
   margin-top: 5px;
@@ -178,6 +198,7 @@ div.login {
   justify-content: space-evenly;
   border-bottom: none;
 }
+
 .previous a:hover {
   color: black;
 }
@@ -187,6 +208,12 @@ div.login {
 .CheckpointTableLinks a:hover {
   color: black;
 }
+
 .CheckpointTableLinks a {
   text-decoration: none;
+}
+
+.btnGivepoints {
+  margin-left: 20px;
+  margin-right: 20px;
 }

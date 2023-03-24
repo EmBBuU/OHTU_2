@@ -26,18 +26,20 @@ const CheckpointTable = () => {
   return (
     <div className="CheckpointTable">
       <table>
-        <tr>
-          <th>RASTI NRO</th>
-          <th>RASTIN NIMI</th>
-        </tr>
-        {locations.map((location, key) => {
-          return (
-            <tr key={key}>
-              <td>{key + 1}</td>
-              <td>{location.name}</td>
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>RASTI NRO</th>
+            <th>RASTIN NIMI</th>
+          </tr>
+          {locations.map((location, key) => {
+            return (
+              <tr key={key}>
+                <td>{key + 1}</td>
+                <td>{location.name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

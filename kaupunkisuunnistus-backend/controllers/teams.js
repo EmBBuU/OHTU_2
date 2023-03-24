@@ -1,28 +1,26 @@
 const teamsRouter = require('express').Router()
 const Team = require('../models/team')
 
-teamsRouter.get('/', (request, response) => {
-  Team.find({}).then(teams => {
-    console.log('List of teams: ', teams)
-    response.json(teams);
-  })
-});
-
-teamsRouter.get('/:id', (request, response, next) => {
-  Team.findById(request.params.id)
-    .then(team => {
-      if (team) {
-        console.log(team)
-        response.json(team)
-      }
-      else {
-        response.status(404).end()
-      }
-    })
-    .catch(error => next(error))
+teamsRouter.get('/', async (request, response) => {
+  const teams = await Team.find({})
+  
+  console.log('List of teams: ', teams)
+  response.json(teams);
 })
 
-teamsRouter.post('/', (request, response, next) => {
+teamsRouter.get('/:id', async (request, response) => {
+  const team = await Team.findById(request.params.id)
+  
+  if (team) {
+    console.log(team)
+    response.json(team)
+  }
+  else {
+    response.status(201).json(savedTeam)
+  }
+})
+
+teamsRouter.post('/', async (request, response) => {
   const body = request.body
 
   if (body.name === undefined) {
@@ -35,23 +33,16 @@ teamsRouter.post('/', (request, response, next) => {
     score: body.score || 0
   })
 
-  team.save()
-    .then(savedTeam => {
-      response.json(savedTeam)
-    })
-    .catch(error => next(error))
+  const savedTeam = await team.save()
+  response.json(savedTeam)
 });
 
-
-teamsRouter.delete("/:id", (request, response, next) => {
-  Team.findByIdAndRemove(request.params.id)
-    .then(() => {
-      response.status(204).end()
-    })
-    .catch(error => next(error))
+teamsRouter.delete("/:id", async (request, response) => {
+  await Team.findByIdAndRemove(request.params.id)
+  response.status(204).end()
 });
 
-// Ei testattu
+// Ei testattu, 
 teamsRouter.put('/:id', (request, response, next) => {
   const body = request.body
 

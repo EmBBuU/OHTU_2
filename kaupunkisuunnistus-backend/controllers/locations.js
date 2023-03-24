@@ -1,28 +1,26 @@
 const locationsRouter = require('express').Router()
 const Location = require('../models/location')
 
-locationsRouter.get('/', (request, response) => {
-  Location.find({}).then(locations => {
-    console.log('List of locations: ', locations)
-    response.json(locations)
-  })
+locationsRouter.get('/', async (request, response) => {
+  const locations = await Location.find({})
+
+  console.log('List of locations: ', locations)
+  response.json(locations)
+})
+
+locationsRouter.get('/:id', async (request, response) => {
+  const location = await Location.findById(request.params.id)
+  
+  if (location) {
+    console.log(location)
+    response.json(location)
+  }
+  else {
+    response.status(201).json(savedLocation)
+  }
 });
 
-locationsRouter.get('/:id', (request, response, next) => {
-  Location.findById(request.params.id)
-    .then(location => {
-      if (location) {
-        console.log(location)
-        response.json(location)
-      }
-      else {
-        response.status(404).end()
-      }
-    })
-    .catch(error => next(error))
-});
-
-locationsRouter.post('/', (request, response, next) => {
+locationsRouter.post('/', async (request, response, next) => {
   const body = request.body
 
   if (body.name === undefined) {
@@ -34,19 +32,13 @@ locationsRouter.post('/', (request, response, next) => {
     name: body.name
   })
 
-  location.save()
-    .then(savedLocation => {
-      response.json(savedLocation)
-    })
-    .catch(error => next(error))
+  const savedLocation = await location.save()
+  response.json(savedLocation)
 });
 
-locationsRouter.delete('/:id', (request, response, next) => {
-  Location.findByIdAndRemove(request.params.id)
-    .then(() => {
-      response.status(204).end()
-    })
-    .catch(error => next(error))
+locationsRouter.delete('/:id', async (request, response) => {
+  await Location.findByIdAndRemove(request.params.id)
+  response.status(204).end()
 });
 
 // Ei testattu

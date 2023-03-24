@@ -24,22 +24,24 @@ const ScoreTable = () => {
   return (
     <div className="ScoreTable">
       <table>
-        <tr>
-          <th>RYHMÄN SIJOITUS</th>
-          <th>RYHMÄN NIMI</th>
-          <th>RYHMÄN PISTETILANNE</th>
-        </tr>
-        {teams
-          // Tähän kohtaan kaipaisi .sort -metodia, että saataisiin joukkueet lajiteltua pisteiden mukaan.
-          .map((team, key) => {
-            return (
-              <tr key={key}>
-                <td>{key + 1}</td>
-                <td>{team.name}</td>
-                <td>{team.score}</td>
-              </tr>
-            );
-          })}
+        <tbody>
+          <tr>
+            <th>RYHMÄN SIJOITUS</th>
+            <th>RYHMÄN NIMI</th>
+            <th>RYHMÄN PISTETILANNE</th>
+          </tr>
+          {teams
+            .sort((a, b) => b.score - a.score)
+            .map((team, key) => {
+              return (
+                <tr key={key}>
+                  <td>{key + 1}</td>
+                  <td>{team.name}</td>
+                  <td>{team.score}</td>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
     </div>
   );

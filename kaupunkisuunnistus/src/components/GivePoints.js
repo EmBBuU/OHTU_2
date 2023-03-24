@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
-  const [counter, setCounter] = useState(0);
+  const [teamPoints, setTeamPoints] = useState(
+    [] //teams.reduce((acc, team) => ({ ...acc, [team.name]: 0 }), {})
+  );
 
   useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
@@ -12,21 +14,93 @@ const GivePoints = () => {
     });
   }, []);
 
+  const addPoints = (event) => {
+    event.preventDefault();
+    const pointObject = {
+      score: teamPoints,
+    };
+
+    axios
+      .post("http://localhost:3002/api/teams", pointObject)
+      .then((response) => {
+        setTeamPoints(teams.concat(response.data));
+        console.log(response);
+      });
+  };
+  /*
+  const handlePointsChange = (teamName, event) => {
+    const copy = [...teamPoints];
+    copy[teamName] = event;
+    setTeamPoints(copy);
+    console.log(event);
+  };
+  const handlePointsChange = (teamName, value) => {
+    setTeamPoints({
+      ...teamPoints,
+      [teamName]: value,
+    });
+  };
+    const { name, value } = event.target;
+    console.log(key);
+    setTeamPoints({ ...teamPoints, [key]: value });
+  };
+  */
+  const handlePointsChange = (event) => {
+    setTeamPoints(event.target.value);
+  };
+
   return (
-    // useRef -> Minkä rastin pisteitä ollaan antamassa!! väliaikaisesti näkyvissä conterina, mutta alempana määritetty ns "oikea tapa"
+    // useRef -> Minkä rastin pisteitä ollaan antamassa!!
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
       <h1>RASTIN NIMI</h1>
       <table>
         <tr>
           <th>RYHMÄN NIMI</th>
-          <th>RYHMÄN PISTEET RASTILTA</th>
+          <th>PISTEET RASTILTA</th>
+          <th>PISTEET YHTEENSÄ</th>
         </tr>
         {teams.map((team, key) => {
           return (
             <tr key={key}>
               <td>{team.name}</td>
               <td>
+                <button
+                  className="btnGivepoints"
+                  onClick={() =>
+                    handlePointsChange(team.name, teamPoints[team.name] + 1)
+                  }
+                >
+                  +
+                </button>
+                {teamPoints[team.name]}
+                <button
+                  className="btnGivepoints"
+                  onClick={() =>
+                    handlePointsChange(team.name, teamPoints[team.name] - 1)
+                  }
+                >
+                  -
+                </button>
+              </td>
+              <td>{team.score}</td>
+            </tr>
+          );
+        })}
+      </table>
+      <button className="previous">
+        <a href="/SelectCheckpoint">TAKAISIN</a>
+      </button>
+    </div>
+  );
+};
+export default GivePoints;
+
+//<td>{teamPoints[team.name] + team.score}</td>
+// const [counter, setCounter] = useState(0);
+
+/*
+<td>
                 <button
                   className="btnGivepoints"
                   onClick={() => setCounter(counter + 1)}
@@ -40,24 +114,10 @@ const GivePoints = () => {
                 >
                   -
                 </button>
-              </td>
-            </tr>
-            //Tuohon team.point -muuttujaan menis ne napeilla annetut pisteet!!!
-          );
-        })}
-      </table>
-      <button className="previous">
-        <a href="/SelectCheckpoint">TAKAISIN</a>
-      </button>
-    </div>
-  );
-};
-export default GivePoints;
-
+                */
 /*
-                <td>
-                  <button className="btnGivepoints" onClick={() => setCounter(counter + 1)}>+</button>
-                  {counter}
-                  <button className="btnGivepoints" onClick={() => setCounter(counter - 1)}>-</button>
-                </td>
+    const { name, value } = event.target;
+    console.log(key);
+    setTeamPoints({ ...teamPoints, [key]: value });
+  };
 */

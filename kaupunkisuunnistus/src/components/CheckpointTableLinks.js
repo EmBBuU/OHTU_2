@@ -18,22 +18,24 @@ const CheckpointTableLinks = () => {
   return (
     <div className="CheckpointTableLinks">
       <table>
-        <tr>
-          <th>RASTI NRO</th>
-          <th>RASTIN NIMI</th>
-        </tr>
-        {locations.map((location, key) => {
-          return (
-            <tr key={key}>
-              <td>
-                <Link to={pointsLink}>{key + 1}</Link>
-              </td>
-              <td>
-                <Link to={pointsLink}>{location.name}</Link>
-              </td>
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>RASTI NRO</th>
+            <th>RASTIN NIMI</th>
+          </tr>
+          {locations.map((location, key) => {
+            return (
+              <tr key={key}>
+                <td>
+                  <Link to={pointsLink}>{key + 1}</Link>
+                </td>
+                <td>
+                  <Link to={pointsLink}>{location.name}</Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

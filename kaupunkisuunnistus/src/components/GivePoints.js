@@ -55,38 +55,40 @@ const GivePoints = () => {
       <b>Anna ryhmille rastikohtaiset pisteet </b>
       <h1>RASTIN NIMI</h1>
       <table>
-        <tr>
-          <th>RYHMÄN NIMI</th>
-          <th>PISTEET RASTILTA</th>
-          <th>PISTEET YHTEENSÄ</th>
-        </tr>
-        {teams.map((team, key) => {
-          return (
-            <tr key={key}>
-              <td>{team.name}</td>
-              <td>
-                <button
-                  className="btnGivepoints"
-                  onClick={() =>
-                    handlePointsChange(team.name, teamPoints[team.name] + 1)
-                  }
-                >
-                  +
-                </button>
-                {teamPoints[team.name]}
-                <button
-                  className="btnGivepoints"
-                  onClick={() =>
-                    handlePointsChange(team.name, teamPoints[team.name] - 1)
-                  }
-                >
-                  -
-                </button>
-              </td>
-              <td>{team.score}</td>
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>RYHMÄN NIMI</th>
+            <th>PISTEET RASTILTA</th>
+            <th>PISTEET YHTEENSÄ</th>
+          </tr>
+          {teams.map((team, key) => {
+            return (
+              <tr key={key}>
+                <td>{team.name}</td>
+                <td>
+                  <button
+                    className="btnGivepoints"
+                    onClick={() =>
+                      handlePointsChange(team.name, teamPoints[team.name] + 1)
+                    }
+                  >
+                    +
+                  </button>
+                  {teamPoints[team.name]}
+                  <button
+                    className="btnGivepoints"
+                    onClick={() =>
+                      handlePointsChange(team.name, teamPoints[team.name] - 1)
+                    }
+                  >
+                    -
+                  </button>
+                </td>
+                <td>{team.score}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <button className="previous">
         <a href="/SelectCheckpoint">TAKAISIN</a>

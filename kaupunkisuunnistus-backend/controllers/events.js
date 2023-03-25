@@ -1,8 +1,6 @@
 const eventsRouter = require('express').Router()
 const Event = require('../models/event')
 
-//en oo tänne pistäny mitään id juttuja koska,,, en tiiä miten ne toimii (tuleeko ne automaattisesti vai)
-//katotaa niit yhessä myöhemmin jos niille on tarvetta!
 
 eventsRouter.get('/', async (request, response) => {
     const events = await Event.find({})
@@ -46,6 +44,11 @@ eventsRouter.delete("/:id", async (request, response) => {
     await Event.findByIdAndRemove(request.params.id)
     response.status(204).end()
 });
+
+eventsRouter.delete("/", async (request, response) => {
+    await Event.deleteMany({})
+    response.status(200).end()
+})
 
 // Ei testattu, kopioin jussin koodia t. julia :3 
 eventsRouter.put('/:id', (request, response, next) => {

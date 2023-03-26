@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 function NewEventForm() {
 
   const [eventName, setEventName] = useState('')

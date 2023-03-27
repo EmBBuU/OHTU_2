@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const CheckpointTableLinks = () => {
   const [locations, setLocations] = useState([]);
+  const [clicked, setClicked] = useState(""); // ATTE! LISÄSIN TÄMÄN JOTTA SIVU TOIMIII
 
   //The link the user clicks is sent to console.log() as message (checkpoint id or name).
   const linkClickHandler = (event, message) => {

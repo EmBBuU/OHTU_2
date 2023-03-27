@@ -1,38 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-const InfoPage = () => {
+function InfoPage() {
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3002/api/events').then(res => {
+      setEvents(res.data)
+    })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
   return (
     <div className="infopage">
-      <h2 className="eventinfoHeading">
-        Skriptin fuksiaiset tms tapahtumaotsikko
-      </h2>
-      <p className="eventinfo">
-        Mitä? Tervetuloa Skriptin fuksiaisiin!
-        <br />
-        <br />
-        <br />
-        Miten? Ryhmien tehtävänä on keksiä ryhmälleen nimi. Nimen mukaan
-        perustatte ryhmälle Instagram tilin. Kun tili on valmis, seuraatte
-        Skriptin instagramtiliä IG: @skriptiry
-        <br />
-        <br />
-        Tämä tili toimii välineenä, johon dokumentoitte kaikki tehtävät joita
-        matkallanne määrätään,sekä niin paljon lisätehtäviä kuin vaan aikaan
-        saatte. Tehtävät pisteytetään sekä piilossa oleviapisteytyksiä on
-        luvassa. Tämä on kilpailu joten voittajille luvassa mainetta ja kunniaa
-        jonka jakaateidän ainut ja oikea Skripti ry. Tilien on oltava
-        piilotettuja ja teidän on hyväksyttävä Skripti seuraajaksi.
-        <br />
-        <br />
-        Tapahtuma alkaa kunnon mittelöillä tiedepuiston kentällä klo 17 ja
-        päättyy klo 21 paikassajonka sijannin saatte viimeiseltä rastilta.Onnea
-        ja menestystä!
-        <br />
-        <br />
-        <br />
-        Missä? Tiedepuiston kentältä aloitetaan klo 17:00
-      </p>
+
+      {events.map(eventName => (
+        <h2 key="1" className="eventinfoHeading">{eventName.eventName}</h2>
+      ))}
+
+
+      {events.map(eventInfoText => (
+        <p key="1" className="eventinfo">{eventInfoText.eventInfoText}</p>
+      ))}
+
 
       <button className="previous">
         <Link to="/">TAKAISIN</Link>

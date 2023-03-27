@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the get request */
 
 /*
 // Example of a data array that you might receive from an API

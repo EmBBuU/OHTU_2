@@ -24,12 +24,11 @@ a.infoPage {
   text-decoration: none;
 }
 
-a.heading {
+.heading {
   text-decoration: none;
   font-style: normal;
-  font-weight: 100;
-  font-size: 25px;
-  line-height: 33px;
+  font-weight: bolder;
+  font-size: larger;
   letter-spacing: 0.05rem;
 }
 
@@ -46,6 +45,7 @@ h2.eventinfoHeading {
 p.eventinfo {
   font-weight: 400;
   line-height: 130%;
+  white-space: pre-line;
 }
 
 .infopage {

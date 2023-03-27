@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 function NewEventForm() {
 
   const [eventName, setEventName] = useState('')
@@ -16,10 +15,12 @@ function NewEventForm() {
     try {
       alert("Tapahtuma on tallennettu!")
 
-      await axios.post("http://localhost:3002/api/events", {
-        eventName, eventPlaces, eventTeams, mapsLink, eventInfoText
-      })
-
+      await axios.delete("http://localhost:3002/api/events", {})
+        .then(
+          await axios.post("http://localhost:3002/api/events", {
+            eventName, eventPlaces, eventTeams, mapsLink, eventInfoText
+          })
+        )
     } catch (e) {
       console.log(e)
     }
@@ -32,29 +33,29 @@ function NewEventForm() {
 
         <h2>LUO UUSI TAPAHTUMA</h2>
 
-        <label for="eventName">Tapahtuman nimi: </label>
+        <label htmlFor="eventName">Tapahtuman nimi: </label>
         <input id="eventName" className="eventName" type="String" onChange={(e) => { setEventName(e.target.value) }} />
 
-        <label for="eventPlaces">
+        <label htmlFor="eventPlaces">
           Tapahtuman rastien määrä (anna numeroina):{" "}
         </label>
         <input id="eventPlaces" className="eventPlaces" type="number" onChange={(e) => { setEventPlaces(e.target.value) }} />
 
-        <label for="eventTeams">
+        <label htmlFor="eventTeams">
           Tapahtuman tiimien määrä (anna numeroina):{" "}
         </label>
         <input id="eventTeams" className="eventTeams" type="number" onChange={(e) => { setEventTeams(e.target.value) }} />
 
-        <label for="mapsLink">Tapahtuman maps-linkki:</label>
+        <label htmlFor="mapsLink">Tapahtuman maps-linkki:</label>
         <input id="mapsLink" className="mapsLink" type="String" onChange={(e) => { setMapsLink(e.target.value) }} />
 
-        <label for="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
+        <label htmlFor="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
         <textarea id="eventInfoText" className="eventInfoText" type="String" onChange={(e) => { setEventInfoText(e.target.value) }} />
 
         <button className="savebutton" id="savebutton" type="submit" onClick={submit}>
           <a href="/login">TALLENNA</a>
         </button>
-        <label for="savebutton">
+        <label htmlFor="savebutton">
           Huom! Kun painat "TALLENNA"-nappia, uusi tapahtuma tulee automaattisesti
           aktiiviseksi.
         </label>

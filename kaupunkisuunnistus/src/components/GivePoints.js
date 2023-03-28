@@ -1,10 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+//import teamService from "./services/teams";
+/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request */
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
   const [teamPoints, setTeamPoints] = useState([]);
+  const [totalScore, setTotalScore] = useState([]);
 
   //This useEffect sets up an effect that will be called every time the value of teams changes.
   //It sets teamPoints to an object with the keys being the names of each team and the values being 0.
@@ -17,23 +20,14 @@ const GivePoints = () => {
   useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
       setTeams(response.data);
+      setTotalScore(response.data);
     });
   }, []);
 
-  const addPoints = (event) => {
-    const pointObject = {
-      score: teamPoints,
-    };
+  console.log(teams, "ORIGINAL");
+  console.log(totalScore, "KOPIO");
 
-    axios
-      .post("http://localhost:3002/api/teams", pointObject)
-      .then((response) => {
-        setTeamPoints(response.data);
-        console.log(response);
-      });
-  };
-
-  const handlePointsChange = (teamName, value) => {
+  const handlePointsPlus = (teamName, value) => {
     const newValue = parseInt(value);
     console.log(teamName);
     console.log(value);
@@ -41,8 +35,44 @@ const GivePoints = () => {
       ...teamPoints,
       [teamName]: newValue,
     });
+    setTotalScore(
+      totalScore.map((team) => {
+        if (team.name === teamName) {
+          return {
+            ...team,
+            score: team.score + 1,
+          };
+        } else {
+          return team;
+        }
+      })
+    );
+    // PUT
   };
-  console.log(teamPoints);
+  console.log(teamPoints, "PISTEET");
+
+  const handlePointsMinus = (teamName, value) => {
+    const newValue = parseInt(value);
+    console.log(teamName);
+    console.log(value);
+    setTeamPoints({
+      ...teamPoints,
+      [teamName]: newValue,
+    });
+    setTotalScore(
+      totalScore.map((team) => {
+        if (team.name === teamName) {
+          return {
+            ...team,
+            score: team.score - 1,
+          };
+        } else {
+          return team;
+        }
+      })
+    );
+    //PUT
+  };
 
   return (
     // useRef -> Minkä rastin pisteitä ollaan antamassa!!
@@ -64,25 +94,19 @@ const GivePoints = () => {
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsChange(
-                        team.name,
-                        (teamPoints[team.name] += 1)
-                      )
+                      handlePointsMinus(team.name, (teamPoints[team.name] -= 1))
                     }
                   >
-                    +
+                    -
                   </button>
                   {teamPoints[team.name]}
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsChange(
-                        team.name,
-                        (teamPoints[team.name] -= 1)
-                      )
+                      handlePointsPlus(team.name, (teamPoints[team.name] += 1))
                     }
                   >
-                    -
+                    +
                   </button>
                 </td>
                 <td>{team.score + teamPoints[team.name]}</td>
@@ -102,58 +126,11 @@ const GivePoints = () => {
 };
 export default GivePoints;
 
-//<td>{teamPoints[team.name] + team.score}</td>
-// const [counter, setCounter] = useState(0);
-
 /*
-<td>
-                <button
-                  className="btnGivepoints"
-                  onClick={() => setCounter(counter + 1)}
-                >
-                  +
-                </button>
-                {counter}
-                <button
-                  className="btnGivepoints"
-                  onClick={() => setCounter(counter - 1)}
-                >
-                  -
-                </button>
-                */
-/*
-    const { name, value } = event.target;
-    console.log(key);
-    setTeamPoints({ ...teamPoints, [key]: value });
-  };
-*/
-/*
-  const handlePointsChange = (teamName, event) => {
-    const copy = [...teamPoints];
-    copy[teamName] = event;
-    setTeamPoints(copy);
-    console.log(event);
-  };
-  const handlePointsChange = (teamName, value) => {
-    setTeamPoints({
-      ...teamPoints,
-      [teamName]: value,
-    });
-  };
-  const handlePointsChange = (event) => {
-    setTeamPoints(event.target.value);
-  };
-    const { name, value } = event.target;
-    console.log(key);
-    setTeamPoints({ ...teamPoints, [key]: value });
-  };
-
-
-  <button
-                    onClick={() =>
-                      addPoints(team.score + teamPoints[team.name])
-                    }
-                  >
+                <td>
+                  <button className="btnOK" type="submit" onClick={}>
                     OK
                   </button>
+                </td>
+
   */

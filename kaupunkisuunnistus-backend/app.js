@@ -9,6 +9,8 @@ morgan.token('body', request => {
   return JSON.stringify(request.body)
 })
 
+const loginRouter = require('./controllers/login')
+const usersRouter = require('./controllers/users')
 const teamsRouter = require('./controllers/teams')
 const locationsRouter = require('./controllers/locations')
 const eventsRouter = require('./controllers/events')
@@ -33,6 +35,8 @@ app.use(express.json())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 app.use(middleware.requestLogger)
 
+app.use('/api/login', loginRouter)
+app.use('/api/users', usersRouter)
 app.use('/api/teams', teamsRouter)
 app.use('/api/locations', locationsRouter)
 app.use('/api/events', eventsRouter)

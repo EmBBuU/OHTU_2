@@ -8,6 +8,7 @@ import "./Style.css";
 import NewEventForm from "./components/NewEventForm";
 import SelectCheckpoint from "./components/SelectCheckpoint";
 import GivePoints from "./components/GivePoints";
+import Login2 from "./components/Login2";
 
 const App = () => (
   <div>
@@ -21,6 +22,7 @@ const App = () => (
         <Route path="/NewEventForm" element={<NewEventForm />} />
         <Route path="/SelectCheckpoint" element={<SelectCheckpoint />} />
         <Route path="/GivePoints" element={<GivePoints />} />
+        <Route path="/Login2" element={<Login2 />} />
       </Routes>
     </div>
   </div>

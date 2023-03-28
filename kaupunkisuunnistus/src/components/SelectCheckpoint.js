@@ -1,5 +1,6 @@
 import React from "react";
 import CheckpointTableLinks from "./CheckpointTableLinks";
+/* Main author of the page Emilia Uurasjärvi - CheckpointTableLinks main author of the page Atte Tanskanen */
 
 function SelectCheckpoint() {
   return (

@@ -18,6 +18,9 @@ function Login() {
             <button>
                 <Link to="/GivePoints">PISTEIDENANTO-SIVU</Link>
             </button>
+            <button>
+                <Link to="/Login2">kirjautumissivulle</Link>
+            </button>
         </div>
     )
 }

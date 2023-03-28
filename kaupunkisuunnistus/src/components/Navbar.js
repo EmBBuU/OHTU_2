@@ -1,3 +1,9 @@
+/**
+ * Luokan työstäminen:
+ * Backend yhdistys ja ulkonäkö - Julia
+ * Napit - Jussi
+ */
+
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png'
 import { useState, useEffect } from "react";

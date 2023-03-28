@@ -1,3 +1,10 @@
+/**
+ * Luokan työstäminen:
+ * Viimeksi päivitetty - Sera
+ * Napit, tekstit - Julia
+ * Taulukot -  (en muista kuka, lisätkää kuka muistaa)
+ */
+
 import React from "react";
 import ScoreTable from "./ScoreTable";
 import CheckpointTable from "./CheckpointTable";

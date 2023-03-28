@@ -1,3 +1,8 @@
+/**
+ * Luokan työstäminen:
+ * Backend yhdistys ja ulkonäkö - Julia
+ */
+
 import React, { useState } from "react";
 import axios from "axios";
 

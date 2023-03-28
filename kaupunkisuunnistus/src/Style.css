@@ -1,3 +1,11 @@
+/**
+ * Luokan työstäminen:
+ * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
+ * Etusivu - Sanni
+ * Taulukot, napit - Emilia
+ * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
+ */
+
 * {
   box-sizing: border-box;
   background-color: #212529;
@@ -119,12 +127,14 @@ td.navTop {
 .eventformForm {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1em;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-left: 18%;
   margin-right: 18%;
   margin-bottom: 10%;
+  margin-top: 2%
 }
 
 input.eventPlaces,
@@ -134,7 +144,7 @@ input.eventTeams {
 
 input.mapsLink,
 input.eventName {
-  width: 50%;
+  width: 40%;
 }
 
 textarea.eventInfoText {

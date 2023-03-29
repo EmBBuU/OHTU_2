@@ -8,7 +8,7 @@ const Login2= () => {
     const [username, setUsername] = useState("") 
     const [password, setPassword] = useState("") 
     const [user, setUser] = useState(null)
-    const [errorMessage, setErrorMessage] = useState
+    const [errorMessage, setErrorMessage] = useState(null)
 
     const handleLogin = async (event) => {
         event.preventDefault()
@@ -28,17 +28,17 @@ const Login2= () => {
         }
       }
 
-      const loginForm = () => (
+      const LoginForm = () => (
         <div>
           <h1>Kirjaudu sisään</h1>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} >
             <div>
               username
                 <input
                 type="text"
                 value={username}
                 name="Username"
-                onChange={({ target }) => setUsername(target.value)}
+                onChange={(e) => setUsername(e.value)}
               />
             </div>
             <div>
@@ -47,7 +47,7 @@ const Login2= () => {
                 type="password"
                 value={password}
                 name="Password"
-                onChange={({ target }) => setPassword(target.value)}
+                onChange={(event) => setPassword(event.value)}
               />
             </div>
             <button type="submit">login</button>
@@ -58,7 +58,7 @@ const Login2= () => {
         <div>
     
           <Notification message={errorMessage} />
-          <loginForm/>
+          <LoginForm/>
         </div>
       )
 }

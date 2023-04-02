@@ -24,7 +24,7 @@ const GivePoints = () => {
     });
   }, []);
 
-  console.log(teams, "ORIGINAL");
+  console.log(teams, "ORIGIN");
   console.log(totalScore, "KOPIO");
 
   const handlePointsPlus = (teamName, value) => {
@@ -48,6 +48,41 @@ const GivePoints = () => {
       })
     );
     // PUT
+    async function submit(e) {
+      e.preventDefault();
+
+      try {
+        // Make a PUT request for each team in the totalScore object
+        await Promise.all(
+          Object.entries(totalScore).map(([teamId, score]) =>
+            axios.put(`http://localhost:3002/api/teams/${teamId}`, { score })
+          )
+        );
+
+        alert("Tapahtuma on tallennettu!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    /*
+    fetch("http://localhost:3002/api/teams", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        score: totalScore[teamName],
+      }),
+    })
+      .then((response) => {
+        // Käsittely onnistuneelle vastaukselle
+        console.log("jeee");
+      })
+      .catch((error) => {
+        // Käsittely virheelle
+        console.log(error);
+      });
+      */
   };
   console.log(teamPoints, "PISTEET");
 

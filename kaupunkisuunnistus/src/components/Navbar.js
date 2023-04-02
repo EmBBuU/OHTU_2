@@ -1,7 +1,6 @@
 /**
  * Luokan työstäminen:
  * Backend yhdistys ja ulkonäkö - Julia
- * Napit - Jussi
  */
 
 import { Link } from "react-router-dom";
@@ -34,17 +33,6 @@ function Navbar() {
                                     <h3 key="1" className="heading">{eventName.eventName}</h3>
                                 ))}
                             </Link>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="navBottom">
-                            <button className='btn-login'>
-                                <Link to="/Login" className="login">KIRJAUDU SISÄÄN</Link>
-                            </button>
-
-                            <button className='btn-info'>
-                                <Link to="/InfoPage" className="infoPage">OHJEET</Link>
-                            </button>
                         </td>
                     </tr>
                 </tbody>

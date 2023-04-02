@@ -1,3 +1,8 @@
+/**
+ * Luokan työstäminen:
+ * Routet - Julia (JA JOKU MUU MYÖS, KIRJATKAA KETKÄ)
+ */
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";

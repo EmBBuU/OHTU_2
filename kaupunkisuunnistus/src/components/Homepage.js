@@ -1,11 +1,30 @@
+/**
+ * Luokan työstäminen:
+ * Viimeksi päivitetty - Sera
+ * Napit, tekstit - Julia
+ * Taulukot -  (en muista kuka, lisätkää kuka muistaa)
+ */
+
 import React from "react";
 import ScoreTable from "./ScoreTable";
 import CheckpointTable from "./CheckpointTable";
 import JoensuuMap from "./JoensuuMap";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
     <div className="homepageBody">
+
+      <div className="frontpageButtons">
+        <button className='btn-login'>
+          <Link to="/Login" className="login">KIRJAUDU SISÄÄN</Link>
+        </button>
+
+        <button className='btn-info'>
+          <Link to="/InfoPage" className="infoPage">OHJEET</Link>
+        </button>
+      </div>
+
       <div>
         <h1>RASTIT</h1>
         <CheckpointTable />
@@ -22,5 +41,6 @@ function Homepage() {
     </div>
   );
 }
+
 
 export default Homepage;

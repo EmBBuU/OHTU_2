@@ -1,3 +1,11 @@
+/**
+ * Luokan työstäminen:
+ * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
+ * Etusivu - Sanni
+ * Taulukot, napit - Emilia
+ * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
+ */
+
 * {
   box-sizing: border-box;
   background-color: #212529;
@@ -6,56 +14,10 @@
   font-style: normal;
 }
 
-div.homepageBody,
-div.givepoints,
-div.selectcheckpoint {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-}
-
 a.login,
 a.previous,
 a.infoPage {
   text-decoration: none;
-}
-
-.heading {
-  text-decoration: none;
-  font-style: normal;
-  font-weight: bolder;
-  font-size: larger;
-  letter-spacing: 0.05rem;
-}
-
-/**
-  Alla infosivun muotoilu
-*/
-h2.eventinfoHeading {
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 40px;
-  text-align: center;
-}
-
-p.eventinfo {
-  font-weight: 400;
-  line-height: 130%;
-  white-space: pre-line;
-}
-
-.infopage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
 }
 
 table {
@@ -74,8 +36,69 @@ td {
   font-size: 14px;
 }
 
+/**
+  Alla niiden sivujen asettelut, joiden muotoilu samanlaista
+*/
+div.givepoints,
+div.selectcheckpoint,
+div.infopage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+  margin-top: 3%;
+}
+
+/**
+  Alla etusivun muotoiluja
+*/
 iframe.homepageMap {
   display: inline;
+}
+
+div.homepageBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+}
+
+.frontpageButtons {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-login {
+  margin-right: 150%;
+  white-space: nowrap;
+}
+
+.frontpageButtons a:hover {
+  color: black;
+}
+
+/**
+  Alla infosivun muotoilu
+*/
+h2.eventinfoHeading {
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+}
+
+p.eventinfo {
+  font-weight: 400;
+  line-height: 130%;
+  white-space: pre-line;
 }
 
 /**
@@ -93,18 +116,6 @@ img.logo {
   width: 100%;
 }
 
-td.navBottom {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-evenly;
-  border-bottom: none;
-}
-
-.navBottom a:hover {
-  color: black;
-}
-
 td.navTop {
   display: flex;
   justify-content: center;
@@ -113,18 +124,28 @@ td.navTop {
   padding-bottom: 40px;
 }
 
+.heading {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: larger;
+  letter-spacing: 0.05rem;
+}
+
 /**
   Alla tapahtuman luonnin sivun muotoilu
 */
 .eventformForm {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1em;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-left: 18%;
   margin-right: 18%;
   margin-bottom: 10%;
+  margin-top: 2%
 }
 
 input.eventPlaces,
@@ -134,7 +155,7 @@ input.eventTeams {
 
 input.mapsLink,
 input.eventName {
-  width: 50%;
+  width: 40%;
 }
 
 textarea.eventInfoText {

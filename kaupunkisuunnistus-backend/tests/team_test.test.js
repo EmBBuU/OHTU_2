@@ -78,7 +78,7 @@ test('a specific team can be viewed', async () => {
     const teamToView = teamsAtStart[0]
 
     const resultTeam = await api
-        .get(`/api/teams/${teamToView.id}`)
+        .get(`/api/teams/${teamToView._id}`)
         .expect(200)
         .expect('Content-Type', /application\/json/)
 
@@ -92,7 +92,7 @@ test('a team can be deleted', async () => {
     const teamToDelete = teamsAtStart[0]
 
     await api
-        .delete(`/api/teams/${teamToDelete.id}`)
+        .delete(`/api/teams/${teamToDelete._id}`)
         .expect(204)
 
     const teamsAtEnd = await helper.teamsInDb()

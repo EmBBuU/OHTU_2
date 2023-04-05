@@ -23,13 +23,13 @@ function InfoPage() {
   return (
     <div className="infopage">
 
-      {events.map(eventName => (
-        <h2 key="1" className="eventinfoHeading">{eventName.eventName}</h2>
+      {events.map(currentevent => (
+        <h2 key="1" className="eventinfoHeading">{currentevent.eventName}</h2>
       ))}
 
 
-      {events.map(eventInfoText => (
-        <p key="1" className="eventinfo">{eventInfoText.eventInfoText}</p>
+      {events.map(currentevent => (
+        <p key="1" className="eventinfo">{currentevent.eventInfoText}</p>
       ))}
 
 

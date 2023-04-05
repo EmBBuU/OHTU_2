@@ -50,17 +50,16 @@ eventsRouter.delete("/", async (request, response) => {
     response.status(200).end()
 })
 
-// Ei testattu, kopioin jussin koodia t. julia :3 
 eventsRouter.put('/:id', (request, response, next) => {
     const body = request.body
 
-    const event = new Event({
+    const event = {
         eventName: body.name,
         eventPlaces: body.eventPlaces,
         eventTeams: body.eventTeams,
         mapsLink: body.mapsLink || "0",
         eventInfoText: body.eventInfoText
-    })
+    }
 
     Event.findByIdAndUpdate(request.params.id, event, { new: true })
         .then(updatedEvent => {

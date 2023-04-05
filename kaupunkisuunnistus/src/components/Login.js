@@ -6,23 +6,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
-    return (
-        <div className="login">
-            <p>Väliaikaiset napit sivujen tarkasteluun:</p>
-            <button>
-                <Link to="/NewEventForm">UUDEN TAPAHTUMAN LUOMINEN</Link>
-            </button>
-            <button>
-                <Link to="/SelectCheckpoint">RASTINPITÄJIEN ETUSIVU</Link>
-            </button>
-            <button>
-                <Link to="/GivePoints">PISTEIDENANTO-SIVU</Link>
-            </button>
-            <button>
-                <Link to="/Login2">kirjautumissivulle</Link>
-            </button>
-        </div>
-    )
+  return (
+    <div className="login">
+      <p>NÄMÄ EHKÄ JÄÄÄÄ???:</p>
+      <button>
+        <Link to="/NewEventForm">LUO UUSI TAPAHTUMA</Link>
+      </button>
+      <button>
+        <Link to="/SelectCheckpoint">ANNA PISTEITÄ</Link>
+      </button>
+      <p>Väliaikainen nappi kirjautumiseen:</p>
+      <button>
+        <Link to="/Login2">KIRJAUDU</Link>
+      </button>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

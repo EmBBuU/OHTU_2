@@ -26,16 +26,19 @@ const GivePoints = () => {
 
   console.log(teams, "ORIGIN");
   console.log(totalScore, "KOPIO");
+  console.log(teamPoints, "TIIMIN PISTEET");
 
-  const handlePointsPlus = (teamName, value) => {
+  const handlePointsPlus = (teamName, value, id) => {
     const newValue = parseInt(value);
-    console.log(teamName);
-    console.log(value);
+    console.log(teamName, "TEAM_NAME");
+    console.log(value, "VALUE");
+    console.log(id, "ID");
     setTeamPoints({
       ...teamPoints,
       [teamName]: newValue,
     });
     setTotalScore(
+      // pelkät pisteet!!
       totalScore.map((team) => {
         if (team.name === teamName) {
           return {
@@ -47,7 +50,22 @@ const GivePoints = () => {
         }
       })
     );
-    // PUT
+    const myTeam = totalScore.find((obj) => obj.name === teamName);
+    console.log(myTeam, "1"); // prints the found object
+    const myScore = myTeam.score;
+    console.log(myScore, "2"); // prints the score of the found object
+    axios
+      .put(`http://localhost:3002/api/teams/${id}`, myScore)
+      .then((response) => {
+        console.log(response.data);
+        setTeamPoints(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  // PUT
+  /*
     async function submit(e) {
       e.preventDefault();
 
@@ -83,10 +101,8 @@ const GivePoints = () => {
         console.log(error);
       });
       */
-  };
-  console.log(teamPoints, "PISTEET");
 
-  const handlePointsMinus = (teamName, value) => {
+  const handlePointsMinus = (teamName, value, id) => {
     const newValue = parseInt(value);
     console.log(teamName);
     console.log(value);
@@ -107,6 +123,15 @@ const GivePoints = () => {
       })
     );
     //PUT
+    axios
+      .put(`http://localhost:3002/api/teams/${id}`, totalScore)
+      .then((response) => {
+        console.log(response.data);
+        setTeamPoints(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -129,7 +154,11 @@ const GivePoints = () => {
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsMinus(team.name, (teamPoints[team.name] -= 1))
+                      handlePointsMinus(
+                        team.name,
+                        (teamPoints[team.name] -= 1),
+                        team._id
+                      )
                     }
                   >
                     -
@@ -138,7 +167,11 @@ const GivePoints = () => {
                   <button
                     className="btnGivepoints"
                     onClick={() =>
-                      handlePointsPlus(team.name, (teamPoints[team.name] += 1))
+                      handlePointsPlus(
+                        team.name,
+                        (teamPoints[team.name] += 1),
+                        team._id
+                      )
                     }
                   >
                     +

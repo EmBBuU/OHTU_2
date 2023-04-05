@@ -28,7 +28,6 @@ locationsRouter.post('/', async (request, response, next) => {
   }
 
   const location = new Location({
-    // location_id automatisoitu incrementti tähän?
     name: body.name
   })
 
@@ -41,7 +40,6 @@ locationsRouter.delete('/:id', async (request, response) => {
   response.status(204).end()
 });
 
-// Ei testattu
 locationsRouter.put('/:id', (request, response, next) => {
   const body = request.body
 

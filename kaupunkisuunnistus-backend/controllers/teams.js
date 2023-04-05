@@ -27,7 +27,6 @@ teamsRouter.post("/", async (request, response) => {
   }
 
   const team = new Team({
-    // team_id automatisoitu incrementti tähän?
     name: body.name,
     score: body.score || 0,
   });
@@ -41,18 +40,13 @@ teamsRouter.delete("/:id", async (request, response) => {
   response.status(204).end();
 });
 
-// Ei testattu,
 teamsRouter.put("/:id", (request, response, next) => {
   const body = request.body;
-  console.log(body.score, "asdf");
-  //undefined asdf
-  //Plan executor error during findAndModify :: caused by :: Performing an update on the path '_id' would modify the immutable field '_id'
 
-  const team = new Team({
-    // team_id pitää tälle tehdä jotain?
+  const team = {
     name: body.name,
     score: body.score,
-  });
+  }
 
   Team.findByIdAndUpdate(request.params.id, team, { new: true })
     .then((updatedTeam) => {

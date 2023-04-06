@@ -14,6 +14,8 @@ import NewEventForm from "./components/NewEventForm";
 import SelectCheckpoint from "./components/SelectCheckpoint";
 import GivePoints from "./components/GivePoints";
 import Login2 from "./components/Login2";
+import EditTeams from "./components/EditTeams";
+import EditCheckpoints from "./components/EditCheckpoints";
 
 const App = () => (
   <div>
@@ -28,6 +30,8 @@ const App = () => (
         <Route path="/SelectCheckpoint" element={<SelectCheckpoint />} />
         <Route path="/GivePoints" element={<GivePoints />} />
         <Route path="/Login2" element={<Login2 />} />
+        <Route path="/EditTeams" element={<EditTeams />} />
+        <Route path="/EditCheckpoints" element={<EditCheckpoints />} />
       </Routes>
     </div>
   </div>

@@ -1,12 +1,11 @@
-/**
- * Luokan työstäminen:
- * Backend yhdistys ja ulkonäkö - Julia
- */
-
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+/**
+ * Main author - Julia Juntunen
+ */
 
 function InfoPage() {
   const [events, setEvents] = useState([])

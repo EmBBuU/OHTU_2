@@ -1,10 +1,9 @@
-/**
- * Luokan työstäminen:
- * Backend yhdistys ja ulkonäkö - Julia
- */
-
 import React, { useState } from "react";
 import axios from "axios";
+
+/**
+ * Main author - Julia Juntunen
+ */
 
 function NewEventForm() {
 

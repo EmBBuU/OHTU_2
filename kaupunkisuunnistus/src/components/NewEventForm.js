@@ -19,8 +19,40 @@ function NewEventForm() {
     try {
       alert("Tapahtuma on tallennettu!")
 
+      //creating lists for new teams and locations
+      let teamNameList = []
+      let locationNameList = []
+
+      //filling the list with new teams
+      for (let i = 0; i < eventTeams; i++) {
+        teamNameList.push({ name: i, score: 0 })
+      }
+      console.log(teamNameList)
+
+      //filling the list with new event locations
+      for (let i = 0; i < eventPlaces; i++) {
+        locationNameList.push({ name: i })
+      }
+      console.log(locationNameList)
+
+      //deletion of all previous teams and locations
+      await axios.delete("http://localhost:3002/api/teams", {})
+        .then(await axios.delete("http://localhost:3002/api/locations", {}))
+
+      //posting all new teams to backend
+      teamNameList.forEach((item) => {
+        axios.post("http://localhost:3002/api/teams", item)
+      });
+
+      //posting all new locations to backend
+      locationNameList.forEach((item) => {
+        axios.post("http://localhost:3002/api/locations", item)
+      });
+
+      //deleting previous event
       await axios.delete("http://localhost:3002/api/events", {})
         .then(
+          //posting new event to backend
           await axios.post("http://localhost:3002/api/events", {
             eventName, eventPlaces, eventTeams, mapsLink, eventInfoText
           })

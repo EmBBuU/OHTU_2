@@ -1,8 +1,7 @@
 /**
- * Luokan työstäminen:
- * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
- * Etusivu - Sanni
- * Taulukot, napit, tiimien muokkaamisen muotoilu, rastien valinnan muotoilu  - Emilia
+ * Infopage, new event page, frontpage, navbar (logo and text) - Julia Juntunen
+ * Frontpage - Sanni Oksanen
+ * Tables, buttons (on hover), editing teams, picking the checkpoint  - Emilia Uurasjärvi
  * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
  */
 
@@ -89,7 +88,6 @@ div.homepageBody {
 */
 h2.eventinfoHeading {
   font-weight: bold;
-  font-size: 25px;
   line-height: 40px;
   text-align: center;
 }

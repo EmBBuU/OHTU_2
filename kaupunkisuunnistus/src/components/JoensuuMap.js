@@ -1,11 +1,12 @@
-/**
- * Luokan työstäminen:
- * Iframe ja sen muotoilut - Atte
- * Backend yhdistys - Julia
- */
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+/**
+ * 
+ * Iframe - Atte Tanskanen
+ * Connection to backend - Julia Juntunen
+ */
 
 export default function JoensuuMap() {
   const [events, setEvents] = useState([])

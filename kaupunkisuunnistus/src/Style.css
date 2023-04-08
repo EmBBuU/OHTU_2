@@ -2,7 +2,7 @@
  * Luokan työstäminen:
  * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
  * Etusivu - Sanni
- * Taulukot, napit - Emilia
+ * Taulukot, napit, tiimien muokkaamisen muotoilu, rastien valinnan muotoilu  - Emilia
  * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
  */
 
@@ -15,7 +15,6 @@
 }
 
 a.login,
-a.previous,
 a.infoPage {
   text-decoration: none;
 }
@@ -145,7 +144,7 @@ td.navTop {
   margin-left: 18%;
   margin-right: 18%;
   margin-bottom: 10%;
-  margin-top: 2%
+  margin-top: 2%;
 }
 
 input.eventPlaces,
@@ -203,7 +202,7 @@ div.login {
   margin-bottom: 10%;
 }
 
-/* Napeille pitäisi saada yhtenäinen muotoilu.... 
+/* Takaisin -napin muotoilu ja toiminnallisuus  
 */
 .previous {
   margin-top: 20px;
@@ -222,7 +221,7 @@ div.login {
   color: black;
 }
 
-/* Rastien valinnan muotilu
+/* Rastien valinnan muotoilu 
 */
 .CheckpointTableLinks a:hover {
   color: black;
@@ -235,4 +234,21 @@ div.login {
 .btnGivepoints {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+/* Tiimien muokkaamisen muotoilu
+*/
+.btnSaveTeam {
+  margin-left: 10px;
+}
+
+div.editteams {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+  margin-top: 3%;
 }

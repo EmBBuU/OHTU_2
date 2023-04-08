@@ -1,13 +1,12 @@
-/**
- * Luokan työstäminen:
- * Backend yhdistys ja ulkonäkö - Julia
- */
-
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from 'react';
+
+/**
+ * Main author - Julia Juntunen
+ */
 
 function Navbar() {
     const [events, setEvents] = useState([])

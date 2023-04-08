@@ -1,3 +1,7 @@
+/**
+ * Main authors: Sera Ilvan & Julia Juntunen
+ */
+
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
@@ -37,7 +41,6 @@ test('a specific team is within the returned teams', async () => {
 
 test('a valid team can be added ', async () => {
     const newTeam = {
-        team_id: 3,
         name: 'lisattytiimi',
         score: 2
     }
@@ -82,7 +85,6 @@ test('a specific team can be viewed', async () => {
         .expect(200)
         .expect('Content-Type', /application\/json/)
 
-    //const processedNoteToView = JSON.parse(JSON.stringify(noteToView))
 
     expect(resultTeam.body).toEqual(teamToView)
 })

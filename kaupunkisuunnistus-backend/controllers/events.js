@@ -1,6 +1,10 @@
-const eventsRouter = require('express').Router()
-const Event = require('../models/event')
+/**
+ * Main author: Jussi Kukkonen
+ * Delete all-method: Julia Juntunen
+ */
 
+const eventsRouter = require('express').Router();
+const Event = require('../models/event');
 
 eventsRouter.get('/', async (request, response) => {
     const events = await Event.find({})

@@ -1,3 +1,7 @@
+/**
+ * Main author: Jussi Kukkonen
+ * Delete all-method: Julia Juntunen
+ */
 const teamsRouter = require("express").Router();
 const Team = require("../models/team");
 
@@ -39,6 +43,11 @@ teamsRouter.delete("/:id", async (request, response) => {
   await Team.findByIdAndRemove(request.params.id);
   response.status(204).end();
 });
+
+teamsRouter.delete("/", async (request, response) => {
+  await Team.deleteMany({})
+  response.status(200).end()
+})
 
 teamsRouter.put("/:id", (request, response, next) => {
   const body = request.body;

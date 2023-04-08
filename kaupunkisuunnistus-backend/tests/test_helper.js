@@ -1,3 +1,7 @@
+/**
+ * All regarding teams, locations and events - Julia Juntunen & Sera Ilvan
+ * All regarding users - Elina Saarelainen & Sanni Oksanen
+ */
 const User = require('../models/user')
 const Team = require('../models/team')
 const Location = require('../models/location')

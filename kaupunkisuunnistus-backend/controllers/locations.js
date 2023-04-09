@@ -1,5 +1,10 @@
-const locationsRouter = require('express').Router()
-const Location = require('../models/location')
+/**
+ * Main author: Jussi Kukkonen
+ * Delete all-method: Julia Juntunen
+ */
+
+const locationsRouter = require('express').Router();
+const Location = require('../models/location');
 
 locationsRouter.get('/', async (request, response) => {
   const locations = await Location.find({})
@@ -10,7 +15,7 @@ locationsRouter.get('/', async (request, response) => {
 
 locationsRouter.get('/:id', async (request, response) => {
   const location = await Location.findById(request.params.id)
-  
+
   if (location) {
     console.log(location)
     response.json(location)
@@ -39,6 +44,11 @@ locationsRouter.delete('/:id', async (request, response) => {
   await Location.findByIdAndRemove(request.params.id)
   response.status(204).end()
 });
+
+locationsRouter.delete("/", async (request, response) => {
+  await Location.deleteMany({})
+  response.status(200).end()
+})
 
 locationsRouter.put('/:id', (request, response, next) => {
   const body = request.body

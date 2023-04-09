@@ -1,8 +1,14 @@
 /**
+<<<<<<< HEAD
  * Luokan työstäminen:
  * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
- * Etusivu - Sanni
+ * Etusivu, kirjautumissivu - Sanni
  * Taulukot, napit, tiimien muokkaamisen muotoilu, rastien valinnan muotoilu  - Emilia
+=======
+ * Infopage, new event page, frontpage, navbar (logo and text) - Julia Juntunen
+ * Frontpage - Sanni Oksanen
+ * Tables, buttons (on hover), editing teams, picking the checkpoint  - Emilia Uurasjärvi
+>>>>>>> 43c8acc2e689197d45fa04518a7045ac2c5c677f
  * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
  */
 
@@ -40,7 +46,7 @@ td {
 */
 div.givepoints,
 div.selectcheckpoint,
-div.infopage {
+div.infopage{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,7 +95,6 @@ div.homepageBody {
 */
 h2.eventinfoHeading {
   font-weight: bold;
-  font-size: 25px;
   line-height: 40px;
   text-align: center;
 }
@@ -135,6 +140,20 @@ td.navTop {
   Alla tapahtuman luonnin sivun muotoilu
 */
 .eventformForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
+
+.loginFormDiv,
+.loginForm {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;

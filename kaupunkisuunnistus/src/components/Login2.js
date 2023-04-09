@@ -17,15 +17,25 @@ const Login2= () => {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        console.log('logging in with', username, password)
+        console.log('logging in with', username, password);
        
         if (validate()) {
           ///implentation
           console.log('proceed');
-           axios.get(process.env.REACT_APP_USERS)/*.then((res) => {
+           axios.get(process.env.REACT_APP_USERS, (request, response) => {
+            const username = String(request.params.username);
+            const password = username.find((password)=> username.password === password);
+            console.log(process.env.REACT_APP_USERS);
+            if (password){
+              console.log("löydetty"+ password);
+              response.json(password);
+            }else{
+              response.status(404).end();
+            }
+           })/*.then((res) => {
               return res.json();
           })*/.then((resp) => {
-              console.log(resp)
+              console.log(resp);
               if (resp.username === username) {
                   toast.success("");
               }

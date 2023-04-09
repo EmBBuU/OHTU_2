@@ -1,7 +1,7 @@
 /**
  * Luokan työstäminen:
  * Infosivu, tapahtumanluontisivu, osa etusivusta, navbar (logot yms) - Julia
- * Etusivu - Sanni
+ * Etusivu, kirjautumissivu - Sanni
  * Taulukot, napit, tiimien muokkaamisen muotoilu, rastien valinnan muotoilu  - Emilia
  * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
  */
@@ -40,7 +40,7 @@ td {
 */
 div.givepoints,
 div.selectcheckpoint,
-div.infopage {
+div.infopage{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,6 +135,20 @@ td.navTop {
   Alla tapahtuman luonnin sivun muotoilu
 */
 .eventformForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
+
+.loginFormDiv,
+.loginForm {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;

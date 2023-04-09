@@ -55,6 +55,11 @@ teamsRouter.put("/:id", (request, response, next) => {
   const team = {
     name: body.name,
     score: body.score,
+    lastUpdated: {
+      type: Date,
+      required: true,
+      default: Date.now
+    }
   }
 
   Team.findByIdAndUpdate(request.params.id, team, { new: true })

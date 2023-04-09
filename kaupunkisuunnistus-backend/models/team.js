@@ -5,7 +5,12 @@ const teamSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  score: Number
+  score: Number,
+  lastUpdated: {
+    type: Date,
+    required: true,
+    default: Date.now
+  }
 })
 
 teamSchema.set('toJSON', {

@@ -26,19 +26,15 @@ const GivePoints = () => {
 
   console.log(teams, "ORIGIN");
   console.log(totalScore, "KOPIO");
-  console.log(teamPoints, "TIIMIN PISTEET");
 
   const handlePointsPlus = (teamName, value, id) => {
     const newValue = parseInt(value);
-    console.log(teamName, "TEAM_NAME");
-    console.log(value, "VALUE");
-    console.log(id, "ID");
     setTeamPoints({
       ...teamPoints,
       [teamName]: newValue,
     });
+    console.log(teamPoints, "asdf");
     setTotalScore(
-      // pelkät pisteet!!
       totalScore.map((team) => {
         if (team.name === teamName) {
           return {
@@ -51,11 +47,40 @@ const GivePoints = () => {
       })
     );
     const myTeam = totalScore.find((obj) => obj.name === teamName);
-    console.log(myTeam, "1"); // prints the found object
     const myScore = myTeam.score;
-    console.log(myScore, "2"); // prints the score of the found object
     axios
-      .put(`http://localhost:3002/api/teams/${id}`, myScore)
+      .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handlePointsMinus = (teamName, value, id) => {
+    const newValue = parseInt(value);
+    setTeamPoints((prevState) => ({
+      ...prevState,
+      [teamName]: prevState[teamName] + newValue,
+    }));
+    setTotalScore(
+      totalScore.map((team) => {
+        if (team.name === teamName) {
+          return {
+            ...team,
+            score: team.score - 1,
+          };
+        } else {
+          return team;
+        }
+      })
+    );
+    //PUT
+    const myTeam = totalScore.find((obj) => obj.name === teamName);
+    const myScore = myTeam.score;
+    axios
+      .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
       .then((response) => {
         console.log(response.data);
         setTeamPoints(response.data);
@@ -64,8 +89,69 @@ const GivePoints = () => {
         console.error(error);
       });
   };
-  // PUT
-  /*
+
+  return (
+    // useRef -> Minkä rastin pisteitä ollaan antamassa!!
+    <div className="givepoints">
+      <b>Anna ryhmille rastikohtaiset pisteet </b>
+      <h1>RASTIN NIMI</h1>
+      <table>
+        <tbody>
+          <tr>
+            <th>RYHMÄN NIMI</th>
+            <th>PISTEET RASTILTA</th>
+            <th>PISTEET YHTEENSÄ</th>
+          </tr>
+          {teams.map((team, key) => {
+            return (
+              <tr key={key}>
+                <td>{team.name}</td>
+                <td>
+                  <button
+                    className="btnGivepoints"
+                    onClick={() =>
+                      handlePointsMinus(
+                        team.name,
+                        (teamPoints[team._id] -= 1),
+                        team._id
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                  {teamPoints[team._id]}
+                  <button
+                    className="btnGivepoints"
+                    onClick={() =>
+                      handlePointsPlus(
+                        team.name,
+                        (teamPoints[team._id] += 1),
+                        team._id
+                      )
+                    }
+                  >
+                    +
+                  </button>
+                </td>
+                <td>{totalScore.find((t) => t.name === team.name)?.score}</td>
+                {
+                  // Virhe ilmo tulee kaiketi tuosta yläpuolen rivistä
+                }
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <button className="previous">
+        <a href="/SelectCheckpoint">TAKAISIN</a>
+      </button>
+    </div>
+  );
+};
+export default GivePoints;
+
+// PUT
+/*
     async function submit(e) {
       e.preventDefault();
 
@@ -101,104 +187,3 @@ const GivePoints = () => {
         console.log(error);
       });
       */
-
-  const handlePointsMinus = (teamName, value, id) => {
-    const newValue = parseInt(value);
-    console.log(teamName);
-    console.log(value);
-    setTeamPoints({
-      ...teamPoints,
-      [teamName]: newValue,
-    });
-    setTotalScore(
-      totalScore.map((team) => {
-        if (team.name === teamName) {
-          return {
-            ...team,
-            score: team.score - 1,
-          };
-        } else {
-          return team;
-        }
-      })
-    );
-    //PUT
-    axios
-      .put(`http://localhost:3002/api/teams/${id}`, totalScore)
-      .then((response) => {
-        console.log(response.data);
-        setTeamPoints(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  return (
-    // useRef -> Minkä rastin pisteitä ollaan antamassa!!
-    <div className="givepoints">
-      <b>Anna ryhmille rastikohtaiset pisteet </b>
-      <h1>RASTIN NIMI</h1>
-      <table>
-        <tbody>
-          <tr>
-            <th>RYHMÄN NIMI</th>
-            <th>PISTEET RASTILTA</th>
-            <th>PISTEET YHTEENSÄ</th>
-          </tr>
-          {teams.map((team, key) => {
-            return (
-              <tr key={key}>
-                <td>{team.name}</td>
-                <td>
-                  <button
-                    className="btnGivepoints"
-                    onClick={() =>
-                      handlePointsMinus(
-                        team.name,
-                        (teamPoints[team.name] -= 1),
-                        team._id
-                      )
-                    }
-                  >
-                    -
-                  </button>
-                  {teamPoints[team.name]}
-                  <button
-                    className="btnGivepoints"
-                    onClick={() =>
-                      handlePointsPlus(
-                        team.name,
-                        (teamPoints[team.name] += 1),
-                        team._id
-                      )
-                    }
-                  >
-                    +
-                  </button>
-                </td>
-                <td>{team.score + teamPoints[team.name]}</td>
-                {
-                  // Virhe ilmo tulee kaiketi tuosta yläpuolen rivistä
-                }
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <button className="previous">
-        <a href="/SelectCheckpoint">TAKAISIN</a>
-      </button>
-    </div>
-  );
-};
-export default GivePoints;
-
-/*
-                <td>
-                  <button className="btnOK" type="submit" onClick={}>
-                    OK
-                  </button>
-                </td>
-
-  */

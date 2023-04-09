@@ -1,19 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const teamSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
-  score: Number
-})
+  score: Number,
+});
 
-teamSchema.set('toJSON', {
+teamSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject._id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  }
-})
+    returnedObject._id = returnedObject._id.toString();
+    //delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
 
-module.exports = mongoose.model('Team', teamSchema)
+module.exports = mongoose.model("Team", teamSchema);

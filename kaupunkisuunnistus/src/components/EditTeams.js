@@ -5,28 +5,42 @@ import axios from "axios";
 
 const EditTeams = () => {
   const [teams, setTeams] = useState([]);
+  const [newName, setNewName] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
       setTeams(response.data);
     });
   }, []);
-
-  const handleSave = () => {
+  /*
+  const handleSave = (newName, teamName) => {
     console.log("OK button clicked!");
-    //PUT
-    /*
     axios
-      .put(`http://localhost:3002/api/teams/${id}`, totalScore)
+      .put(`http://localhost:3002/api/teams/${teamName}`, newName)
       .then((response) => {
         console.log(response.data);
-        setTeamPoints(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-      */
   };
+  */
+
+  async function submit(e, oldName) {
+    e.preventDefault();
+
+    try {
+      alert("Nimi on tallennettu!");
+
+      await axios
+        .put(`http://localhost:3002/api/teams/${oldName}`, newName)
+        .then((response) => {
+          console.log(response.data);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div className="editteams">
@@ -49,10 +63,13 @@ const EditTeams = () => {
                       className="newTeamName"
                       type="String"
                       onChange={(e) => {
-                        handleSave(e.target.value);
+                        setNewName(e.target.value);
                       }}
                     />
-                    <button className="btnSaveTeam" onClick={handleSave}>
+                    <button
+                      className="btnSaveTeam"
+                      onClick={(submit, team.name)}
+                    >
                       OK
                     </button>
                   </td>

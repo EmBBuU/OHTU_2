@@ -28,7 +28,7 @@ const App = () => (
         <Route path="/Login" element={<Login />} />
         <Route path="/NewEventForm" element={<NewEventForm />} />
         <Route path="/SelectCheckpoint" element={<SelectCheckpoint />} />
-        <Route path="/GivePoints" element={<GivePoints />} />
+        <Route path="/GivePoints/:data" element={<GivePoints />} />
         <Route path="/Login2" element={<Login2 />} />
         <Route path="/EditTeams" element={<EditTeams />} />
         <Route path="/EditCheckpoints" element={<EditCheckpoints />} />

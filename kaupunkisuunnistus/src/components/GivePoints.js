@@ -8,6 +8,9 @@ const GivePoints = () => {
   const [teams, setTeams] = useState([]);
   const [teamPoints, setTeamPoints] = useState([]);
   const [totalScore, setTotalScore] = useState([]);
+  const currentUrl = window.location.href;
+  const urlParts = currentUrl.split("/");
+  const checkpointName = urlParts[urlParts.length - 1];
 
   //This useEffect sets up an effect that will be called every time the value of teams changes.
   //It sets teamPoints to an object with the keys being the names of each team and the values being 0.
@@ -94,7 +97,7 @@ const GivePoints = () => {
     // useRef -> Minkä rastin pisteitä ollaan antamassa!!
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
-      <h1>RASTIN NIMI</h1>
+      <h1>{checkpointName}</h1>
       <table>
         <tbody>
           <tr>

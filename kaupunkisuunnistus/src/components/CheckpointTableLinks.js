@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -7,13 +7,15 @@ import { Link } from "react-router-dom";
 
 const CheckpointTableLinks = () => {
   const [locations, setLocations] = useState([]);
-  const [clicked, setClicked] = useState("");
+  //var clickedRef = useRef();
 
   //The link the user clicks is sent to console.log() as message (checkpoint id or name).
-  const linkClickHandler = (event, message) => {
-    console.log("Klikattu linkki: ", message);
-    setClicked(message);
+  /*const linkClickHandler = (event, message) => {
+    console.log("Klikattu linkki messagen kautta: ", message);
+    clickedRef = message;
+    console.log("Klikattu linkki useRefin kautta: ", clickedRef);
   };
+  */
 
   useEffect(() => {
     axios.get("http://localhost:3002/api/locations").then((response) => {
@@ -33,18 +35,10 @@ const CheckpointTableLinks = () => {
             return (
               <tr key={key}>
                 <td>
-                  <Link
-                    onClick={(event) => linkClickHandler(event, key + 1)}
-                    to={"/GivePoints"}
-                  >
-                    {key + 1}
-                  </Link>
+                  <Link to={`/GivePoints/${location.name}`}>{key + 1}</Link>
                 </td>
                 <td>
-                  <Link
-                    onClick={(event) => linkClickHandler(event, location.name)}
-                    to={"/GivePoints"}
-                  >
+                  <Link to={`/GivePoints/${location.name}`}>
                     {location.name}
                   </Link>
                 </td>
@@ -60,6 +54,12 @@ const CheckpointTableLinks = () => {
 /*
 <Link to={"/GivePoints"}>{key + 1}</Link>
 <Link to={"/GivePoints"}>{location.name}</Link>
+<Link
+  onClick={(event) => linkClickHandler(event, location.name)}
+  to={"/GivePoints"}
+>
+  {location.name}
+</Link>
 */
 
 export default CheckpointTableLinks;

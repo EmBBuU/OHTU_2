@@ -249,13 +249,15 @@ div.login {
   margin-right: 20px;
 }
 
-/* Tiimien muokkaamisen muotoilu
+/* Tiimien ja rastien muokkaamisen muotoilu
 */
-.btnSaveTeam {
+.btnSaveTeam,
+.btnSaveLocation {
   margin-left: 10px;
 }
 
-div.editteams {
+.editteams,
+.editLocations {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -265,7 +267,8 @@ div.editteams {
   margin-bottom: 10%;
   margin-top: 3%;
 }
-.newTeamName {
+.newTeamName
+.newLocationName {
   width: 100%;
 }
 

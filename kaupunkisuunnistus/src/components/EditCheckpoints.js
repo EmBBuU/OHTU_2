@@ -1,33 +1,31 @@
+/* Main author: Jussi Kukkonen */
 import React from "react"
 import { useState, useEffect } from "react"
-import axios from "axios"
+import checkpointService from "../services/checkpoints"
 
-const EditTeams = () => {
-  const [locations, setLocations] = useState([])
+
+const EditCheckpoints = () => {
+  const [checkpoints, setCheckpoints] = useState([])
   const [setName, setNewName] = useState("")
   const [editId, setEditId] = useState("")
 
   useEffect(() => {
-    axios.get("http://localhost:3002/api/locations").then((response) => {
-      setLocations(response.data);
-    });
-  }, []);
+    checkpointService.getAll().then((initialCheckpoints) => {
+      setCheckpoints(initialCheckpoints)
+    })
+  }, [])
 
   const updateName = (id) => {
-
-    axios
-      .put(`http://localhost:3002/api/locations/${id}`, { name: setName })
-      .then((response) => {
-        console.log(response.data)
-        setLocations((prevLocations) =>
-          prevLocations.map((location) =>
-            location._id === id ? { ...location, name: setName } : location
-          )
+    const checkpointToUpdate = checkpoints.find((c) => c._id === id)
+    const updatedCheckpoint = { ...checkpointToUpdate, name: setName }
+    checkpointService.update(id, updatedCheckpoint).then((response) => {
+      setCheckpoints((prevCheckpoints) =>
+        prevCheckpoints.map((checkpoint) =>
+          checkpoint._id === id ? response : checkpoint
         )
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+      )
+    })
+    setEditId("")
   }
 
   const handleEditName = (name, id) => {
@@ -36,7 +34,7 @@ const EditTeams = () => {
   };
 
   return (
-    <div className="editLocations">
+    <div className="editCheckpoints">
       <table>
         <tbody>
           <tr>
@@ -44,14 +42,14 @@ const EditTeams = () => {
             <th>RASTIN UUSI NIMI</th>
             <th></th>
           </tr>
-          {locations.map((location, key) => {
+          {checkpoints.map((checkpoint, key) => {
             return (
               <tr key={key}>
-                <td>{location.name}</td>
+                <td>{checkpoint.name}</td>
                 <td>
-                  {editId === location._id ? (
+                  {editId === checkpoint._id ? (
                     <input
-                      className="newLocationName"
+                      className="newCheckpointName"
                       type="String"
                       value={setName}
                       onChange={(e) => {
@@ -59,36 +57,36 @@ const EditTeams = () => {
                       }}
                     />
                   ) : (
-                    <span>{location.name}</span>
+                    <span>{checkpoint.name}</span>
                   )}
                 </td>
                 <td>
-                  {editId === location._id ? (
+                  {editId === checkpoint._id ? (
                     <button
-                      className="btnSaveLocation"
-                      onClick={() => updateName(location._id)}
+                      className="btnSaveCheckpoint"
+                      onClick={() => updateName(checkpoint._id)}
                     >
                       OK
                     </button>
                   ) : (
                     <button
-                      className="btnEditLocation"
-                      onClick={() => handleEditName(location.name, location._id)}
+                      className="btnEditCheckpoint"
+                      onClick={() =>
+                        handleEditName(checkpoint.name, checkpoint._id)
+                      }
                     >
                       MUOKKAA
                     </button>
                   )}
                 </td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>
-      <button className="previous">
-        <a href="/login">TAKAISIN</a>
-      </button>
     </div>
   )
 }
 
-export default EditTeams;
+export default EditCheckpoints;
+

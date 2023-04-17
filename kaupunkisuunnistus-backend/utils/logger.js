@@ -1,3 +1,4 @@
+/* Main author: Jussi Kukkonen */
 const info = (...params) => {
   console.log(...params)
 }

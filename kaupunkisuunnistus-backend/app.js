@@ -1,3 +1,4 @@
+/* Main author: Jussi Kukkonen */
 const config = require('./utils/config')
 const express = require('express')
 require('express-async-errors')

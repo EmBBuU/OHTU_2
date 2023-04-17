@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import teamService from "../services/teams"
 /* Main author of the page Emilia Uurasjärvi*/
 
 const EditTeams = () => {
@@ -8,12 +8,31 @@ const EditTeams = () => {
   const [editedName, setEditedName] = useState("");
   const [editedId, setEditedId] = useState("");
 
-  useEffect(() => {
-    axios.get("http://localhost:3002/api/teams").then((response) => {
-      setTeams(response.data);
-    });
-  }, []);
+    useEffect(() => {
+    teamService.getAll().then((initialTeams) => {
+      setTeams(initialTeams)
+    })
+  }, [])
 
+  const updateName = (id) => {
+    const teamToUpdate = teams.find((t) => t._id === id)
+    const updatedTeam = { ...teamToUpdate, name: editedName }
+    teamService.update(id, updatedTeam).then((response) => {
+      setTeams((prevTeams) =>
+        prevTeams.map((team) =>
+          team._id === id ? response : team
+        )
+      )
+    })
+    setEditedId("")
+  }
+
+  const handleEditName = (name, id) => {
+    setEditedName(name);
+    setEditedId(id);
+  };
+  
+  /*
   const updateName = (id) => {
     try {
       alert("Nimi on tallennettu!");
@@ -32,11 +51,9 @@ const EditTeams = () => {
       console.log(e);
     }
   };
+  */
 
-  const handleEditName = (name, id) => {
-    setEditedName(name);
-    setEditedId(id);
-  };
+
 
   /*
   const handleNameChange = (teamId, newName) => {
@@ -49,7 +66,7 @@ const EditTeams = () => {
   */
 
   return (
-    <div className="editteams">
+    <div className="editTeams">
       <table>
         <tbody>
           <tr>

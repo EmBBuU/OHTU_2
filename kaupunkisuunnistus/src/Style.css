@@ -252,12 +252,12 @@ div.login {
 /* Tiimien ja rastien muokkaamisen muotoilu
 */
 .btnSaveTeam,
-.btnSaveLocation {
+.btnSaveCheckpoint {
   margin-left: 10px;
 }
 
-.editteams,
-.editLocations {
+.editTeams,
+.editCheckpoints {
   display: flex;
   flex-direction: column;
   justify-content: center;

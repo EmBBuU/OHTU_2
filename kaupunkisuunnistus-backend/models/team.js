@@ -1,3 +1,4 @@
+/* Main author: Jussi Kukkonen */
 const mongoose = require("mongoose");
 
 const teamSchema = new mongoose.Schema({

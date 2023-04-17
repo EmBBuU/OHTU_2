@@ -1,3 +1,4 @@
+/* Main author: Jussi Kukkonen */
 const logger = require('./logger')
 
 const requestLogger = (request, response, next) => {

@@ -1,0 +1,5 @@
+PUT http://localhost:3002/api/teams/642bdb4e41592930fe68c9c3
+
+{
+  "score": 6,
+}

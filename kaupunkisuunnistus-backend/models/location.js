@@ -1,3 +1,4 @@
+/* Main author: Jussi Kukkonen */
 const mongoose = require('mongoose')
 
 const locationSchema = new mongoose.Schema({

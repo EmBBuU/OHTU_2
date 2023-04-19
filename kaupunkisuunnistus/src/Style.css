@@ -216,7 +216,6 @@ div.login {
   margin-bottom: 10%;
 }
 
-
 .loginFormDiv,
 .loginForm {
   display: flex;
@@ -265,13 +264,15 @@ div.login {
   margin-right: 20px;
 }
 
-/* Tiimien muokkaamisen muotoilu
+/* Tiimien ja rastien muokkaamisen muotoilu
 */
-.btnSaveTeam {
+.btnSaveTeam,
+.btnSaveCheckpoint {
   margin-left: 10px;
 }
 
-div.editteams {
+.editTeams,
+.editCheckpoints {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -280,6 +281,10 @@ div.editteams {
   margin-right: 18%;
   margin-bottom: 10%;
   margin-top: 3%;
+}
+.newTeamName
+.newLocationName {
+  width: 100%;
 }
 
 @media only screen and (max-width: 670px) {
@@ -333,12 +338,10 @@ div.editteams {
     width: 100%;
     resize: none;
   }
-
 }
 
 @media only screen and (max-width: 330px) {
   .heading {
     font-size: large;
   }
-
 }

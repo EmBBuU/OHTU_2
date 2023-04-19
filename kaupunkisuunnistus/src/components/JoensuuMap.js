@@ -25,6 +25,7 @@ export default function JoensuuMap() {
     <div>
       {events.map(currentevent => (
         <iframe
+          className="homepageMap"
           key="1"
           src={currentevent.mapsLink}
           title="map"

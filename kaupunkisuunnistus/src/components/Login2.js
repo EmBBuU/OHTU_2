@@ -1,10 +1,8 @@
 import React from "react";
 import { Link, useNavigate} from "react-router-dom";
-import loginService from "../services/login";
 import Notification from "./Notification";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 
 const Login2= () => {
@@ -13,6 +11,8 @@ const Login2= () => {
     const [user, setUser] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null)
     const usenavigate=useNavigate();
+    const USERS=process.env.REACT_APP_USERS
+    const USER1=JSON.parse(USERS)
 
 
     const handleLogin = async (event) => {
@@ -22,27 +22,19 @@ const Login2= () => {
         if (validate()) {
           ///implentation
           console.log('proceed');
-           axios.get(process.env.REACT_APP_USERS, (request, response) => {
-            const username = String(request.params.username);
-            const password = username.find((password)=> username.password === password);
-            console.log(process.env.REACT_APP_USERS);
-            if (password){
-              console.log("löydetty"+ password);
-              response.json(password);
-            }else{
-              response.status(404).end();
-            }
-           })/*.then((res) => {
-              return res.json();
-          })*/.then((resp) => {
-              console.log(resp);
-              if (resp.username === username) {
-                  toast.success("");
+          console.log(USERS)
+          console.log(JSON.parse(USERS))
+          console.log(USER1.username)
+        
+          try {
+              
+              if (USER1.username === username) {
+                  console.log("käyttäjä oikein");
               }
-              if (resp.password === password) {
-                  toast.success('Success');
-                  sessionStorage.setItem('username',username);
-                  sessionStorage.setItem('userrole',resp.role);
+              if (USER1.password === password) {
+                  console.log('salasana oikein');
+                  //sessionStorage.setItem('username',username);
+                  //sessionStorage.setItem('userrole',USERS.role);
                   usenavigate('/Login')
               }else{
                 setErrorMessage('wrong credentials1')
@@ -50,14 +42,13 @@ const Login2= () => {
                   setErrorMessage(null)
                 }, 5000)
               }
-          }).catch((err) => {
+          }catch(err) {
               console.log("error");
               setErrorMessage('wrong credentials')
               setTimeout(() => {
                 setErrorMessage(null)
               }, 5000)
-              //toast.error('Login Failed due to :' + err.message);
-          });
+          };
       }
          /*catch (exception) {
           setErrorMessage('wrong credentials')

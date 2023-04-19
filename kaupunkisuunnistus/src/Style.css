@@ -1,8 +1,9 @@
 /**
- * Infopage, new event page, frontpage, navbar (logo and text) - Julia Juntunen
+ * Infopage, new event page, frontpage, navbar (logo and text), scaling - Julia Juntunen
  * Frontpage - Sanni Oksanen
  * Tables, buttons (on hover), editing teams, picking the checkpoint  - Emilia Uurasjärvi
  * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
+ * Final changes, scaling - Sera Ilvan
  */
 
 * {
@@ -15,6 +16,23 @@
 
 p {
   font-size: large;
+}
+
+button {
+  background-color: #212529;
+  border: 1px solid #b0bec5;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 7px px;
+}
+
+button:hover, button:hover a {
+  background-color: #b0bec5;
+  color: #000;
 }
 
 a.login,
@@ -76,16 +94,13 @@ div.homepageBody {
   margin-bottom: 10%;
   display: flex;
   justify-content: space-evenly;
+  border-color: blueviolet;
 }
 
 .btn-login {
   margin-right: 150%;
-  white-space: nowrap;
 }
 
-.frontpageButtons a:hover {
-  color: black;
-}
 
 /**
   Alla infosivun muotoilu

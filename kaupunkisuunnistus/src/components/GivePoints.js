@@ -1,6 +1,5 @@
-import React from "react";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import teamService from "../services/teams"
 /* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings chekpointName */
 
 const GivePoints = () => {
@@ -12,12 +11,22 @@ const GivePoints = () => {
   const checkpointName = urlParts[urlParts.length - 1];
 
   useEffect(() => {
+    teamService.getAll().then((initialData) => {
+      setTeams(initialData)
+      setTotalScore(initialData);
+      setTeamPoints(Array(initialData.length).fill(0));
+    })
+  }, [])
+
+  /*
+  useEffect(() => {
     axios.get("http://localhost:3002/api/teams").then((response) => {
       setTeams(response.data);
       setTotalScore(response.data);
       setTeamPoints(Array(response.data.length).fill(0));
     });
   }, []);
+  */
 
   const handlePointsPlus = (teamName, id, index) => {
     const newTeamPoints = [...teamPoints];
@@ -39,15 +48,26 @@ const GivePoints = () => {
     const myTeam = totalScore.find((obj) => obj.name === teamName);
     const myScore = myTeam.score + 1;
     console.log(myScore, "myScore");
-    axios
-      .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+
+  /*
+        axios
+          .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    */
+
+          teamService.update(id, { score: myScore })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
 
   const handlePointsMinus = (teamName, id, index) => {
     const newTeamPoints = [...teamPoints];
@@ -68,10 +88,21 @@ const GivePoints = () => {
     );
     const myTeam = totalScore.find((obj) => obj.name === teamName);
     const myScore = myTeam.score - 1;
-    axios
-      .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
+
+    /*
+        axios
+          .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    */
+
+    teamService.update(id, { score: myScore })
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       })
       .catch((error) => {
         console.error(error);

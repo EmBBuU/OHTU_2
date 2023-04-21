@@ -1,8 +1,7 @@
 /**
- * Infopage, new event page, frontpage, navbar (logo and text), scaling - Julia Juntunen
+ * Frontpage, Infopage, new event page, navbar, scaling, final changes - Julia Juntunen
  * Frontpage - Sanni Oksanen
  * Tables, buttons (on hover), editing teams, picking the checkpoint  - Emilia Uurasjärvi
- * (jne, lisätkää tänne lisää ite mitä muotoilittekaan, en muista läheskään kaikkea)
  * Final changes, scaling - Sera Ilvan
  */
 
@@ -30,14 +29,14 @@ button {
   padding: 7px;
 }
 
-button:hover, button:hover a {
-  background-color: #b0bec5;
-  color: #000;
+button a {
+  text-decoration: none;
 }
 
-a.login,
-a.infoPage {
-  text-decoration: none;
+button:hover,
+button:hover a {
+  background-color: #b0bec5;
+  color: #000;
 }
 
 table {
@@ -51,59 +50,57 @@ td {
   height: 35px;
 }
 
-.updated {
-  letter-spacing: 0.05rem;
-  font-size: 14px;
-}
-
 /**
-  Alla niiden sivujen asettelut, joiden muotoilu samanlaista
+  Styling for most of the pages
 */
 div.givepoints,
 div.selectcheckpoint,
-div.infopage {
+div.infopage,
+div.editTeams,
+div.editCheckpoints {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-  margin-top: 3%;
+  padding-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 /**
-  Alla etusivun muotoiluja
+  Frontpage styling
 */
+.homepageBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 iframe.homepageMap {
   display: inline;
 }
 
-div.homepageBody {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-}
-
 .frontpageButtons {
-  margin-top: 3%;
-  margin-bottom: 10%;
+  margin-top: 1%;
+  margin-bottom: 4%;
   display: flex;
   justify-content: space-evenly;
-  border-color: blueviolet;
 }
 
 .btn-login {
   margin-right: 150%;
 }
 
+.updated {
+  letter-spacing: 0.05rem;
+  font-size: 14px;
+}
 
 /**
-  Alla infosivun muotoilu
+  Infopage styling
 */
 h2.eventinfoHeading {
   font-weight: bold;
@@ -118,7 +115,7 @@ p.eventinfo {
 }
 
 /**
-  Alla navbar muotoilu
+  Navbar styling
 */
 img.logo {
   width: 75px;
@@ -149,7 +146,7 @@ td.navTop {
 }
 
 /**
-  Alla tapahtuman luonnin sivun muotoilu
+  New event form -styling
 */
 .eventformForm {
   display: flex;
@@ -158,10 +155,10 @@ td.navTop {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-  margin-top: 2%;
+  text-align: center;
+  padding-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 label {
@@ -170,38 +167,23 @@ label {
 
 input.eventPlaces,
 input.eventTeams {
-  width: 15%;
+  width: 10%;
 }
 
 input.mapsLink,
 input.eventName {
-  width: 40%;
+  width: 30%;
 }
 
 textarea.eventInfoText {
   height: 200px;
-  width: 70%;
+  width: 50%;
   resize: none;
 }
 
-button.savebutton a {
-  text-decoration: none;
-}
-
-button.savebutton a:hover {
-  color: black;
-}
-
-button.previouslogin a {
-  text-decoration: none;
-}
-
-button.previouslogin a:hover {
-  color: black;
-}
 
 /**
-  Alla kirjautumissivun muotoiluja
+  Login page styling
 */
 
 div.login {
@@ -211,26 +193,23 @@ div.login {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 3%;
 }
 
 .loginFormDiv,
 .loginForm {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-  margin-top: 2%;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 
-/* Takaisin -napin muotoilu ja toiminnallisuus  
+/**
+  Styling for the "previous page" button  
 */
 .previous {
   margin-top: 20px;
@@ -245,11 +224,9 @@ div.login {
   border-bottom: none;
 }
 
-.previous a:hover {
-  color: black;
-}
 
-/* Rastien valinnan muotoilu 
+/* 
+  Select checkpoint -styling
 */
 .CheckpointTableLinks a:hover {
   color: black;
@@ -264,28 +241,21 @@ div.login {
   margin-right: 20px;
 }
 
-/* Tiimien ja rastien muokkaamisen muotoilu
+/* 
+ Edit checkpoints and teams -styling
 */
 .btnSaveTeam,
 .btnSaveCheckpoint {
   margin-left: 10px;
 }
 
-.editTeams,
-.editCheckpoints {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
-  margin-bottom: 10%;
-  margin-top: 3%;
-}
-.newTeamName
-.newLocationName {
+.newTeamName .newLocationName {
   width: 100%;
 }
+
+/**
+  Styling for smaller screens (mobile phones)
+*/
 
 @media only screen and (max-width: 670px) {
   table:not(.nav) {
@@ -300,6 +270,11 @@ div.login {
 
   button {
     font-size: medium;
+  }
+
+  .CheckpointTableLinks {
+    padding-left: 2%;
+    padding-right: 2%;
   }
 
   .btnGivepoints {
@@ -317,11 +292,17 @@ div.login {
     text-align: center;
   }
 
+  .checkpointAtGivepoints {
+    padding-top: 6%;
+    padding-bottom: 4%;
+  }
+
   th,
   td {
     font-size: medium;
     margin: 2%;
   }
+
 
   input.eventPlaces,
   input.eventTeams {

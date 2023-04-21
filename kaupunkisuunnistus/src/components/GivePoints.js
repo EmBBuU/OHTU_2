@@ -49,25 +49,25 @@ const GivePoints = () => {
     const myScore = myTeam.score + 1;
     console.log(myScore, "myScore");
 
-  /*
-        axios
-          .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
-          .then((response) => {
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-    */
+    /*
+          axios
+            .put(`http://localhost:3002/api/teams/${id}`, { score: myScore })
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+      */
 
-          teamService.update(id, { score: myScore })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      };
+    teamService.update(id, { score: myScore })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const handlePointsMinus = (teamName, id, index) => {
     const newTeamPoints = [...teamPoints];
@@ -112,7 +112,7 @@ const GivePoints = () => {
   return (
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
-      <h1>{checkpointName}</h1>
+      <h1 className="checkpointAtGivepoints">{checkpointName}</h1>
       <table>
         <tbody>
           <tr>

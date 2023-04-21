@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div className="login">
-      <p>NÄMÄ EHKÄ JÄÄÄÄ???:</p>
       <button>
         <Link to="/NewEventForm">LUO UUSI TAPAHTUMA</Link>
       </button>

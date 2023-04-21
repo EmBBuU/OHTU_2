@@ -27,7 +27,7 @@ button {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  padding: 7px px;
+  padding: 7px;
 }
 
 button:hover, button:hover a {

@@ -84,6 +84,9 @@ const EditCheckpoints = () => {
           })}
         </tbody>
       </table>
+      <button className="previous">
+        <a href="/login">TAKAISIN</a>
+      </button>
     </div>
   )
 }

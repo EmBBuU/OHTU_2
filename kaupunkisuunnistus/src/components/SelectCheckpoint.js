@@ -10,6 +10,9 @@ function SelectCheckpoint() {
         <h1>RASTIT</h1>
         <CheckpointTableLinks />
       </div>
+      <button className="previous">
+        <a href="/login">TAKAISIN</a>
+      </button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import eventService from "../services/events";
 
 /**
  * Main author - Julia Juntunen
@@ -11,6 +11,13 @@ function InfoPage() {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
+    eventService.getAll().then((initialEvents) => {
+      setEvents(initialEvents);
+    });
+  }, []);
+
+  /*
+  useEffect(() => {
     axios.get('http://localhost:3002/api/events').then(res => {
       setEvents(res.data)
     })
@@ -18,6 +25,7 @@ function InfoPage() {
         console.log(err)
       })
   }, [])
+  */
 
   return (
     <div className="infopage">

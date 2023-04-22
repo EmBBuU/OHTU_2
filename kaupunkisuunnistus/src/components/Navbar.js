@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png'
 import { useState, useEffect } from "react";
-import axios from "axios";
-import React from 'react';
+import eventService from "../services/events";
 
 /**
  * Main author - Julia Juntunen
@@ -12,6 +11,13 @@ function Navbar() {
     const [events, setEvents] = useState([])
 
     useEffect(() => {
+      eventService.getAll().then((initialEvents) => {
+        setEvents(initialEvents);
+      });
+    }, []);
+
+    /*
+    useEffect(() => {
         axios.get('http://localhost:3002/api/events').then(res => {
             setEvents(res.data)
         })
@@ -19,6 +25,7 @@ function Navbar() {
                 console.log(err)
             })
     }, [])
+    */
 
     return (
         <div>

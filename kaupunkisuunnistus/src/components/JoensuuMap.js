@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import eventService from "../services/events";
 
 /**
  * 
@@ -12,6 +12,13 @@ export default function JoensuuMap() {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
+    eventService.getAll().then((initialEvents) => {
+      setEvents(initialEvents);
+    });
+  }, []);
+
+  /*
+  useEffect(() => {
     axios.get('http://localhost:3002/api/events').then(res => {
       setEvents(res.data)
     })
@@ -19,7 +26,7 @@ export default function JoensuuMap() {
         console.log(err)
       })
   }, [])
-
+  */
 
   return (
     <div>

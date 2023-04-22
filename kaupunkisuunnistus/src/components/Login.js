@@ -20,9 +20,8 @@ function Login() {
       <button>
         <Link to="/EditTeams">MUOKKAA TIIMEJÄ</Link>
       </button>
-      <p>Väliaikainen nappi kirjautumiseen:</p>
       <button>
-        <Link to="/Login2">KIRJAUDU</Link>
+        <Link to="/">KIRJAUDU ULOS</Link>
       </button>
     </div>
   );

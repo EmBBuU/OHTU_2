@@ -42,7 +42,7 @@ useEffect(() => {
 
       <div className="frontpageButtons">
         <button className='btn-login'>
-          <Link to="/Login" className="login">KIRJAUDU SISÄÄN</Link>
+          <Link to="/Login2" className="login">KIRJAUDU SISÄÄN</Link>
         </button>
 
         <button className='btn-info'>

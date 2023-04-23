@@ -1,3 +1,4 @@
+/* Main author: Atte Tanskanen */
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -43,7 +44,7 @@ const CheckpointTableLinks = () => {
             return (
               <tr key={key}>
                 <td>
-                  <Link to={`/GivePoints/${location.name}`}>{key + 1}</Link>
+                  <Link to={`/GivePoints/${location._id}`}>{key + 1}</Link>
                 </td>
                 <td>
                   <Link to={`/GivePoints/${location.name}`}>

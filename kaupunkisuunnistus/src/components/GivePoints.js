@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import teamService from "../services/teams"
-/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings chekpointName */
+import teamService from "../services/teams";
+import checkpointService from "../services/checkpoints";
+/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings checkpointName */
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
@@ -12,11 +13,11 @@ const GivePoints = () => {
 
   useEffect(() => {
     teamService.getAll().then((initialData) => {
-      setTeams(initialData)
+      setTeams(initialData);
       setTotalScore(initialData);
       setTeamPoints(Array(initialData.length).fill(0));
-    })
-  }, [])
+    });
+  }, []);
 
   /*
   useEffect(() => {
@@ -60,7 +61,8 @@ const GivePoints = () => {
             });
       */
 
-    teamService.update(id, { score: myScore })
+    teamService
+      .update(id, { score: myScore })
       .then((response) => {
         console.log(response);
       })
@@ -100,7 +102,8 @@ const GivePoints = () => {
           });
     */
 
-    teamService.update(id, { score: myScore })
+    teamService
+      .update(id, { score: myScore })
       .then((response) => {
         console.log(response);
       })
@@ -112,6 +115,7 @@ const GivePoints = () => {
   return (
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
+      <h1 className="checkpointAtGivepoints">{checkpointName}</h1>
       <h1 className="checkpointAtGivepoints">{checkpointName}</h1>
       <table>
         <tbody>

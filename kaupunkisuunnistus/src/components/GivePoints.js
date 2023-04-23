@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import teamService from "../services/teams";
 import checkpointService from "../services/checkpoints";
-/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings checkpointName */
+/* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings checkpointId */
 
 const GivePoints = () => {
   const [teams, setTeams] = useState([]);
   const [teamPoints, setTeamPoints] = useState([]);
   const [totalScore, setTotalScore] = useState([]);
+  const [locations, setLocations] = useState([]);
   const currentUrl = window.location.href;
   const urlParts = currentUrl.split("/");
-  const checkpointName = urlParts[urlParts.length - 1];
+  const checkpointId = urlParts[urlParts.length - 1];
 
   useEffect(() => {
     teamService.getAll().then((initialData) => {
@@ -18,6 +19,19 @@ const GivePoints = () => {
       setTeamPoints(Array(initialData.length).fill(0));
     });
   }, []);
+
+  useEffect(() => {
+    checkpointService.getAll().then((initialCheckpoints) => {
+      setLocations(initialCheckpoints);
+    });
+  }, []);
+
+  const chosenCheckpoint = locations.find(
+    (location) => location._id === checkpointId
+  );
+  const chosenCheckpointName = chosenCheckpoint
+    ? chosenCheckpoint.name
+    : undefined;
 
   /*
   useEffect(() => {
@@ -115,8 +129,7 @@ const GivePoints = () => {
   return (
     <div className="givepoints">
       <b>Anna ryhmille rastikohtaiset pisteet </b>
-      <h1 className="checkpointAtGivepoints">{checkpointName}</h1>
-      <h1 className="checkpointAtGivepoints">{checkpointName}</h1>
+      <h1 className="checkpointAtGivepoints">{chosenCheckpointName}</h1>
       <table>
         <tbody>
           <tr>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 /**
  * Main author - Julia Juntunen
  */
@@ -89,7 +89,7 @@ function NewEventForm() {
         <textarea id="eventInfoText" className="eventInfoText" type="String" onChange={(e) => { setEventInfoText(e.target.value) }} />
 
         <button className="savebutton" id="savebutton" type="submit" onClick={submit}>
-          <a href="/login">TALLENNA</a>
+          <Link to="/LoggedInMenu">TALLENNA</Link>
         </button>
         <label htmlFor="savebutton">
           Huom! Kun painat "TALLENNA"-nappia, uusi tapahtuma tulee automaattisesti
@@ -98,7 +98,7 @@ function NewEventForm() {
 
 
         <button className="previouslogin">
-          <a href="/login">PERUUTA</a>
+          <Link to="/LoggedInMenu">TAKAISIN</Link>
         </button>
 
       </form>

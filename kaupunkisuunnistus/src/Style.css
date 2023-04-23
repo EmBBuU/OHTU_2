@@ -5,6 +5,7 @@
  * Final changes, scaling - Sera Ilvan
  */
 
+
 * {
   box-sizing: border-box;
   background-color: #212529;
@@ -50,6 +51,7 @@ td {
   height: 35px;
 }
 
+
 /**
   Styling for most of the pages
 */
@@ -66,6 +68,7 @@ div.editCheckpoints {
   padding-left: 10%;
   padding-right: 10%;
 }
+
 
 /**
   Frontpage styling
@@ -99,6 +102,7 @@ iframe.homepageMap {
   font-size: 14px;
 }
 
+
 /**
   Infopage styling
 */
@@ -113,6 +117,7 @@ p.eventinfo {
   line-height: 130%;
   white-space: pre-line;
 }
+
 
 /**
   Navbar styling
@@ -144,6 +149,7 @@ td.navTop {
   font-size: larger;
   letter-spacing: 0.05rem;
 }
+
 
 /**
   New event form -styling
@@ -183,10 +189,19 @@ textarea.eventInfoText {
 
 
 /**
-  Login page styling
+  Login page and logged in -page styling
 */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 3%;
+}
 
-div.login {
+div.loginmenu {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,15 +213,6 @@ div.login {
   padding-top: 3%;
 }
 
-.loginFormDiv,
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1em;
-}
 
 /**
   Styling for the "previous page" button  
@@ -241,6 +247,7 @@ div.login {
   margin-right: 20px;
 }
 
+
 /* 
  Edit checkpoints and teams -styling
 */
@@ -252,6 +259,7 @@ div.login {
 .newTeamName .newLocationName {
   width: 100%;
 }
+
 
 /**
   Styling for smaller screens (mobile phones)

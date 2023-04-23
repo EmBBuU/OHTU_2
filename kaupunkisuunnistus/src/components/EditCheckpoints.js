@@ -2,7 +2,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import checkpointService from "../services/checkpoints"
-
+import { Link } from "react-router-dom";
 
 const EditCheckpoints = () => {
   const [checkpoints, setCheckpoints] = useState([])
@@ -85,7 +85,7 @@ const EditCheckpoints = () => {
         </tbody>
       </table>
       <button className="previous">
-        <a href="/login">TAKAISIN</a>
+        <Link to="/LoggedInMenu">TAKAISIN</Link>
       </button>
     </div>
   )

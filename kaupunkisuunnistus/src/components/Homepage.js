@@ -16,9 +16,9 @@ import moment from 'moment';
 
 function Homepage() {
 
-// Tällä haetaan milloin sivusto on viimeksi refreshattu, ei liity pisteisiin tai tiimeihin lainkaan
+  // Tällä haetaan milloin sivusto on viimeksi refreshattu, ei liity pisteisiin tai tiimeihin lainkaan
   const lastUpdate = new Date(document.lastModified);
-  
+
   /*
   * Tähän jätetty Viimeksi päivitetty- tiedon koodi, jolla mahdollisesti olisi haettu tiimien pistetietojen
   * päivitys
@@ -42,7 +42,7 @@ useEffect(() => {
 
       <div className="frontpageButtons">
         <button className='btn-login'>
-          <Link to="/Login2" className="login">KIRJAUDU SISÄÄN</Link>
+          <Link to="/LoginForm" className="login">KIRJAUDU SISÄÄN</Link>
         </button>
 
         <button className='btn-info'>

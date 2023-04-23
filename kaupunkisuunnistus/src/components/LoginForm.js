@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Notification from "./Notification";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
-const Login2 = () => {
+const LoginForm = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [user, setUser] = useState(null)
@@ -32,7 +32,7 @@ const Login2 = () => {
             console.log('salasana oikein');
             //sessionStorage.setItem('username',username);
             //sessionStorage.setItem('userrole',USERS.role);
-            usenavigate('/Login')
+            usenavigate('/LoggedInMenu')
           } else {
             setErrorMessage('Salasana ei kelpaa')
             setTimeout(() => {
@@ -81,11 +81,13 @@ const Login2 = () => {
 
       <Notification message={errorMessage} />
       <div className="loginFormDiv">
-        <h1>Kirjaudu sisään</h1>
         <form className="loginForm" onSubmit={handleLogin} >
+          <h2>KIRJAUDU SISÄÄN</h2>
+
           <div>
-            käyttäjätunnus
+            <label htmlFor="username">Käyttäjätunnus:</label>
             <input
+              id="username"
               type="text"
               value={username}
               name="Username"
@@ -93,8 +95,9 @@ const Login2 = () => {
             />
           </div>
           <div>
-            salasana
+            <label htmlFor="password">Salasana:</label>
             <input
+              id="password"
               type="password"
               value={password}
               name="Password"
@@ -107,4 +110,4 @@ const Login2 = () => {
     </div>
   )
 }
-export default Login2
+export default LoginForm

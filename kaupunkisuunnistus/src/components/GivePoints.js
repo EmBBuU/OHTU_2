@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import teamService from "../services/teams";
 import checkpointService from "../services/checkpoints";
+import { Link } from "react-router-dom";
 /* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings chekpointName */
 
 const GivePoints = () => {
@@ -111,7 +112,7 @@ const GivePoints = () => {
         </tbody>
       </table>
       <button className="previous">
-        <a href="/SelectCheckpoint">TAKAISIN</a>
+        <Link to="/LoggedInMenu">TAKAISIN</Link>
       </button>
     </div>
   );

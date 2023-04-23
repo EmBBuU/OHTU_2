@@ -6,12 +6,14 @@ import teamService from "../services/teams";
 const ScoreTable = () => {
   const [teams, setTeams] = useState([]);
 
+  //retrieving data from teamService
   useEffect(() => {
     teamService.getAll().then((initialTeams) => {
       setTeams(initialTeams);
     });
   }, []);
 
+  // Rendering the component
   return (
     <div className="ScoreTable">
       <table>

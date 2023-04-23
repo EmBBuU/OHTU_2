@@ -1,3 +1,4 @@
+//Initialization of the drop-down menu for further development, Main author of the page is Emilia Uurasjärvi
 const Dropdown = () => {
   return (
     <div class="dropdown">

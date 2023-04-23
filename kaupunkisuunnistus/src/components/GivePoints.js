@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import teamService from "../services/teams";
+import checkpointService from "../services/checkpoints";
 /* Main author of the page Emilia Uurasjärvi, Jussi Kukkonen made the HTTP GET request and Atte Tanskanen brings chekpointName */
 
 const GivePoints = () => {

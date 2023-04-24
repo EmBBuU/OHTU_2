@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import checkpointService from "../services/checkpoints";
+import teamService from "../services/teams";
+import eventService from "../services/events";
 /**
  * Main author - Julia Juntunen
+ * Imported axios methods from services components - Jussi Kukkonen
  */
 
 function NewEventForm() {
@@ -13,6 +16,56 @@ function NewEventForm() {
   const [mapsLink, setMapsLink] = useState('')
   const [eventInfoText, setEventInfoText] = useState('')
 
+  async function submit(e) {
+    e.preventDefault();
+
+    try {
+      
+      //creating lists for new teams and locations
+      let teamNameList = []
+      let locationNameList = []
+
+      //filling the list with new teams
+      for (let i = 0; i < eventTeams; i++) {
+        teamNameList.push({ name: i, score: 0 })
+      }
+      console.log(teamNameList)
+
+      //filling the list with new event locations
+      for (let i = 0; i < eventPlaces; i++) {
+        locationNameList.push({ name: i })
+      }
+      console.log(locationNameList)
+
+      //deletion of all previous teams and locations
+      await teamService.removeAll({})
+      await checkpointService.removeAll({})
+
+      //posting all new teams to backend
+      teamNameList.forEach((item) => {
+        teamService.create(item)
+      });
+
+      //posting all new locations to backend
+      locationNameList.forEach((item) => {
+        checkpointService.create(item)
+      });
+
+      //deleting previous event and creating a new one
+      await eventService.removeAll({})
+      await eventService.create(
+        { eventName, eventPlaces, eventTeams, mapsLink, eventInfoText }
+      )
+
+      alert("Tapahtuma on tallennettu!")
+
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
+  /*
   async function submit(e) {
     e.preventDefault();
 
@@ -62,6 +115,7 @@ function NewEventForm() {
     }
 
   }
+  */
 
   return (
     <div className="eventformDiv">

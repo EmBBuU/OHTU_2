@@ -36,7 +36,7 @@ function NewEventForm() {
       console.log(locationNameList)
 
       //deletion of all previous teams and locations
-      await axios.delete("http://localhost:3002/api/teams", {})
+      axios.delete("http://localhost:3002/api/teams", {})
         .then(await axios.delete("http://localhost:3002/api/locations", {}))
 
       //posting all new teams to backend
@@ -50,10 +50,10 @@ function NewEventForm() {
       });
 
       //deleting previous event
-      await axios.delete("http://localhost:3002/api/events", {})
+      axios.delete("http://localhost:3002/api/events", {})
         .then(
           //posting new event to backend
-          await axios.post("http://localhost:3002/api/events", {
+          axios.post("http://localhost:3002/api/events", {
             eventName, eventPlaces, eventTeams, mapsLink, eventInfoText
           })
         )
@@ -68,24 +68,26 @@ function NewEventForm() {
       <form className="eventformForm" action="POST">
 
         <h2>LUO UUSI TAPAHTUMA</h2>
+        <p>Pakolliset kentät ovat merkittynä merkillä *</p>
+        <br />
 
-        <label htmlFor="eventName">Tapahtuman nimi: </label>
+        <label htmlFor="eventName">*Tapahtuman nimi: </label>
         <input id="eventName" className="eventName" type="String" onChange={(e) => { setEventName(e.target.value) }} />
 
         <label htmlFor="eventPlaces">
-          Tapahtuman rastien määrä (anna numeroina):{" "}
+          *Tapahtuman rastien määrä:{" "}
         </label>
         <input id="eventPlaces" className="eventPlaces" type="number" onChange={(e) => { setEventPlaces(e.target.value) }} />
 
         <label htmlFor="eventTeams">
-          Tapahtuman tiimien määrä (anna numeroina):{" "}
+          *Tapahtuman tiimien määrä:{" "}
         </label>
         <input id="eventTeams" className="eventTeams" type="number" onChange={(e) => { setEventTeams(e.target.value) }} />
 
-        <label htmlFor="mapsLink">Tapahtuman maps-linkki:</label>
+        <label htmlFor="mapsLink">Tapahtuman maps-linkki (Käytä "embed"-muotoista linkkiä):</label>
         <input id="mapsLink" className="mapsLink" type="String" onChange={(e) => { setMapsLink(e.target.value) }} />
 
-        <label htmlFor="eventInfoText">Tapahtuman ohjeet ohjesivulle: </label>
+        <label htmlFor="eventInfoText">*Tapahtuman ohjeet ohjesivulle: </label>
         <textarea id="eventInfoText" className="eventInfoText" type="String" onChange={(e) => { setEventInfoText(e.target.value) }} />
 
         <button className="savebutton" id="savebutton" type="submit" onClick={submit}>

@@ -78,7 +78,6 @@ const LoginForm = () => {
 
   return (
     <div>
-
       <Notification message={errorMessage} />
       <div className="loginFormDiv">
         <form className="loginForm" onSubmit={handleLogin} >
@@ -86,7 +85,7 @@ const LoginForm = () => {
 
           <div>
             <label htmlFor="username">Käyttäjätunnus:</label>
-            <input
+            <input className="loginInput"
               id="username"
               type="text"
               value={username}
@@ -96,7 +95,7 @@ const LoginForm = () => {
           </div>
           <div>
             <label htmlFor="password">Salasana:</label>
-            <input
+            <input className="loginInput"
               id="password"
               type="password"
               value={password}

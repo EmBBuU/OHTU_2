@@ -51,6 +51,12 @@ td {
   height: 35px;
 }
 
+input {
+  border: 1px solid #ccc;
+  padding: 6px;
+  margin-bottom: 2px; 
+  width: 100%;
+ }
 
 /**
   Styling for most of the pages
@@ -213,6 +219,10 @@ div.loginmenu {
   padding-top: 3%;
 }
 
+.loginInput {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
 
 /**
   Styling for the "previous page" button  

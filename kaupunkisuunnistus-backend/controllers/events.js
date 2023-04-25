@@ -36,7 +36,7 @@ eventsRouter.post('/', async (request, response) => {
         eventName: body.eventName,
         eventPlaces: body.eventPlaces,
         eventTeams: body.eventTeams,
-        mapsLink: body.mapsLink || "0",
+        mapsLink: body.mapsLink || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1836.23759955423!2d29.741962116427313!3d62.597993182919375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469b8687258b9dc7%3A0xbf7037be7c052a42!2sJoensuun%20Tiedepuisto!5e0!3m2!1sfi!2sfi!4v1680704961782!5m2!1sfi!2sfi",
         eventInfoText: body.eventInfoText
     })
 

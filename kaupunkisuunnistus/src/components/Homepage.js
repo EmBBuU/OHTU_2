@@ -24,7 +24,7 @@ const lastUpdate = new Date(document.lastModified);
 
       <div className="frontpageButtons">
         <button className='btn-login'>
-          <Link to="/Login2" className="login">KIRJAUDU SISÄÄN</Link>
+          <Link to="/LoginForm" className="login">KIRJAUDU SISÄÄN</Link>
         </button>
 
         <button className='btn-info'>

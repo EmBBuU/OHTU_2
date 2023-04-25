@@ -1,6 +1,5 @@
 /**
- * Luokan työstäminen:
- * Routet - Julia (JA JOKU MUU MYÖS, KIRJATKAA KETKÄ)
+ * Routes - Julia Juntunen
  */
 
 import React from "react";
@@ -8,14 +7,14 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import InfoPage from "./components/InfoPage";
 import Homepage from "./components/Homepage";
-import Login from "./components/Login";
-import "./Style.css";
+import LoggedInMenu from "./components/LoggedInMenu";
 import NewEventForm from "./components/NewEventForm";
 import SelectCheckpoint from "./components/SelectCheckpoint";
 import GivePoints from "./components/GivePoints";
-import Login2 from "./components/Login2";
+import LoginForm from "./components/LoginForm";
 import EditTeams from "./components/EditTeams";
 import EditCheckpoints from "./components/EditCheckpoints";
+import "./Style.css";
 
 const App = () => (
   <div>
@@ -25,11 +24,11 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/InfoPage" element={<InfoPage />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/LoggedInMenu" element={<LoggedInMenu />} />
         <Route path="/NewEventForm" element={<NewEventForm />} />
         <Route path="/SelectCheckpoint" element={<SelectCheckpoint />} />
         <Route path="/GivePoints/:data" element={<GivePoints />} />
-        <Route path="/Login2" element={<Login2 />} />
+        <Route path="/LoginForm" element={<LoginForm />} />
         <Route path="/EditTeams" element={<EditTeams />} />
         <Route path="/EditCheckpoints" element={<EditCheckpoints />} />
       </Routes>

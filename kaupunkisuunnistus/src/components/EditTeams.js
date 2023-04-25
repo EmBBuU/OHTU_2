@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import teamService from "../services/teams"
+import { Link } from "react-router-dom";
 /* Main author of the page Emilia Uurasjärvi*/
 
 const EditTeams = () => {
@@ -8,7 +9,7 @@ const EditTeams = () => {
   const [editedName, setEditedName] = useState("");
   const [editedId, setEditedId] = useState("");
 
-    useEffect(() => {
+  useEffect(() => {
     teamService.getAll().then((initialTeams) => {
       setTeams(initialTeams)
     })
@@ -31,7 +32,7 @@ const EditTeams = () => {
     setEditedName(name);
     setEditedId(id);
   };
-  
+
   /*
   const updateName = (id) => {
     try {
@@ -115,7 +116,7 @@ const EditTeams = () => {
         </tbody>
       </table>
       <button className="previous">
-        <a href="/login">TAKAISIN</a>
+        <Link to="/LoggedInMenu">TAKAISIN</Link>
       </button>
     </div>
   );

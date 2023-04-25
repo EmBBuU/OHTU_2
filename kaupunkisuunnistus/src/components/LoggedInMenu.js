@@ -1,16 +1,9 @@
-//lisäsin väliaikasesti tälle kirjautumissivulle napin, mistä pääsee
-//katselemaan sivuja jotka tulevaisuudessa tulee näkyville sitten joskus
-//kirjautuessa sisään. Nämä napit tulee siis poistumaan
-
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Login() {
+function LoggedInMenu() {
   return (
-    <div className="login">
-      <button>
-        <Link to="/NewEventForm">LUO UUSI TAPAHTUMA</Link>
-      </button>
+    <div className="loginmenu">
       <button>
         <Link to="/SelectCheckpoint">ANNA PISTEITÄ</Link>
       </button>
@@ -21,10 +14,13 @@ function Login() {
         <Link to="/EditTeams">MUOKKAA TIIMEJÄ</Link>
       </button>
       <button>
+        <Link to="/NewEventForm">LUO UUSI TAPAHTUMA</Link>
+      </button>
+      <button>
         <Link to="/">KIRJAUDU ULOS</Link>
       </button>
     </div>
   );
 }
 
-export default Login;
+export default LoggedInMenu;

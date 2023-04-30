@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import teamService from "../services/teams";
-/* This is the EditTeams component which is responsible for rendering a table of teams that can be edited.
- Main author of the page is Emilia Uurasjärvi*/
+import { Link } from "react-router-dom";
+/* Main author of the page Emilia Uurasjärvi*/
 
 const EditTeams = () => {
   // Declaring states for teams, editedName, and editedId
@@ -10,7 +10,6 @@ const EditTeams = () => {
   const [editedName, setEditedName] = useState("");
   const [editedId, setEditedId] = useState("");
 
-  // Fetching initial teams data from the server using the useEffect hook
   useEffect(() => {
     teamService.getAll().then((initialTeams) => {
       setTeams(initialTeams);
@@ -36,6 +35,37 @@ const EditTeams = () => {
     setEditedName(name);
     setEditedId(id);
   };
+
+  /*
+  const updateName = (id) => {
+    try {
+      alert("Nimi on tallennettu!");
+
+      axios
+        .put(`http://localhost:3002/api/teams/${id}`, { name: editedName })
+        .then((response) => {
+          console.log(response.data);
+          setTeams((prevTeams) =>
+            prevTeams.map((team) =>
+              team._id === id ? { ...team, name: editedName } : team
+            )
+          );
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  */
+
+  /*
+  const handleNameChange = (teamId, newName) => {
+    setTeams((prevState) =>
+      prevState.map((team) =>
+        team._id === teamId ? { ...team, name: newName } : team
+      )
+    );
+  };
+  */
 
   // Rendering the table of teams and allowing for editing
   return (
@@ -88,7 +118,7 @@ const EditTeams = () => {
         </tbody>
       </table>
       <button className="previous">
-        <a href="/login">TAKAISIN</a>
+        <Link to="/LoggedInMenu">TAKAISIN</Link>
       </button>
     </div>
   );

@@ -16,33 +16,15 @@ import moment from 'moment';
 
 function Homepage() {
 
-// Tällä haetaan milloin sivusto on viimeksi refreshattu, ei liity pisteisiin tai tiimeihin lainkaan
-  const lastUpdate = new Date(document.lastModified);
+// Displays the time when the website has been refreshed or opened.
+const lastUpdate = new Date(document.lastModified);
   
-  /*
-  * Tähän jätetty Viimeksi päivitetty- tiedon koodi, jolla mahdollisesti olisi haettu tiimien pistetietojen
-  * päivitys
-  *
-  const [teams, setTeams] = useState([]);
-  const [lastUpdated, setLastUpdated] = useState('');
-
-useEffect(() => {
-  axios.get('http://localhost:3002/api/teams')
-  .then(res => {
-    setTeams(res.data);
-    setLastUpdated(moment(res.data[0].lastUpdated).format('hh:mm:ss a'));
-  })
-  .catch(err => {
-    console.log(err)
-  })
-}) */
-
   return (
     <div className="homepageBody">
 
       <div className="frontpageButtons">
         <button className='btn-login'>
-          <Link to="/Login2" className="login">KIRJAUDU SISÄÄN</Link>
+          <Link to="/LoginForm" className="login">KIRJAUDU SISÄÄN</Link>
         </button>
 
         <button className='btn-info'>

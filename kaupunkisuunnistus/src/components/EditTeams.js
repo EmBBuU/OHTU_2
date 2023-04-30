@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import teamService from "../services/teams";
 import { Link } from "react-router-dom";
-/* Main author of the page Emilia Uurasjärvi*/
+/* This is the EditTeams component which is responsible for rendering a table of teams that can be edited.
+ Main author of the page is Emilia Uurasjärvi*/
 
 const EditTeams = () => {
   // Declaring states for teams, editedName, and editedId
@@ -10,6 +11,7 @@ const EditTeams = () => {
   const [editedName, setEditedName] = useState("");
   const [editedId, setEditedId] = useState("");
 
+  // Fetching initial teams data from the server using the useEffect hook
   useEffect(() => {
     teamService.getAll().then((initialTeams) => {
       setTeams(initialTeams);
